@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Códigos SIMS — Caterpillar 794AC</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f4f5f7; color: #1a1a1a; }
+.header { background: #FFCD11; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid #e6b800; }
+.header-logo { font-size: 24px; font-weight: 900; color: #1a1a1a; letter-spacing: -1px; }
+.header-info strong { display: block; font-size: 14px; font-weight: 700; }
+.header-info span { font-size: 12px; color: #444; }
+.container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+.ia-box { background: #fff; border: 1px solid #dbeafe; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.ia-title { font-size: 14px; font-weight: 700; color: #1d4ed8; margin-bottom: 0.75rem; }
+.ia-title::before { content: "✦ "; }
+.ia-row { display: flex; gap: 8px; }
+.ia-row textarea { flex: 1; padding: 10px 12px; font-size: 13px; border: 1px solid #ccc; border-radius: 8px; resize: vertical; min-height: 80px; font-family: Arial, sans-serif; }
+.ia-row textarea:focus { outline: none; border-color: #3b82f6; }
+.btn-ia { padding: 0 20px; font-size: 13px; font-weight: 700; background: #1d4ed8; color: #fff; border: none; border-radius: 8px; cursor: pointer; min-width: 130px; }
+.btn-ia:hover { background: #1e40af; }
+.ia-result { margin-top: 1rem; display: none; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1rem; font-size: 13px; line-height: 1.9; }
+.ia-result .codigo-principal { background: #fee2e2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; font-weight: 700; font-size: 14px; }
+.ia-result .codigo-complementar { background: #fef9c3; border-left: 4px solid #eab308; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+.ia-result .dica { background: #dcfce7; border-left: 4px solid #22c55e; border-radius: 6px; padding: 0.75rem 1rem; font-size: 12px; color: #166534; }
+.ia-result .nenhum { background: #f1f5f9; border-radius: 6px; padding: 0.75rem 1rem; color: #64748b; font-size: 13px; }
+
+.section-title { font-size: 12px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; }
+.search-bar input { width: 100%; padding: 10px 14px; font-size: 14px; border: 1px solid #ccc; border-radius: 8px; background: #fff; margin-bottom: 1rem; }
+.search-bar input:focus { outline: none; border-color: #3b82f6; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.chip { padding: 4px 12px; font-size: 12px; border-radius: 20px; border: 1px solid #ccc; cursor: pointer; background: #fff; color: #555; }
+.chip:hover { border-color: #93c5fd; color: #1d4ed8; }
+.chip.active { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; font-weight: 700; }
+.count { font-size: 12px; color: #888; margin-bottom: 0.5rem; }
+.table-card { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); overflow: hidden; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #e5e7eb; color: #444; font-weight: 700; font-size: 11px; text-transform: uppercase; background: #f9fafb; }
+td { padding: 9px 12px; border-bottom: 1px solid #f3f4f6; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f0f9ff; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.badge-A{background:#EAF3DE;color:#3B6D11}.badge-B{background:#E6F1FB;color:#185FA5}.badge-C{background:#FAECE7;color:#993C1D}.badge-D{background:#FAEEDA;color:#854F0B}.badge-E{background:#FBEAF0;color:#993556}.badge-F{background:#FCEBEB;color:#A32D2D}.badge-G{background:#F1EFE8;color:#5F5E5A}.badge-H{background:#E1F5EE;color:#0F6E56}.badge-J{background:#EEEDFE;color:#534AB7}
+.badge-K,.badge-L,.badge-M,.badge-N,.badge-P,.badge-Q,.badge-R,.badge-T,.badge-U,.badge-W,.badge-Y,.badge-Z{background:#F1EFE8;color:#444441}
+.footer { text-align: center; font-size: 11px; color: #aaa; padding: 2rem 0 1rem; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-logo">CAT</div>
+  <div class="header-info">
+    <strong>Códigos SIMS — Cartão de Falhas</strong>
+    <span>Frota 794AC · Sotreq S11D · Canaã dos Carajás</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ia-box">
+    <div class="ia-title">Identificador Automático de Código</div>
+    <div class="ia-row">
+      <textarea id="ia-input" placeholder="Cole aqui a descrição da falha... Ex: ATRITO COM ABRAÇADEIRA DO MANGOTE DE ADMISSÃO, DANIFICOU MANGUEIRA ANTI CAVITAÇÃO DA LINHA DA BOMBA D'ÁGUA AUXILIAR PARA O RADIADOR"></textarea>
+      <button class="btn-ia" onclick="identificar()">Identificar<br>Código</button>
+    </div>
+    <div class="ia-result" id="ia-result"></div>
+  </div>
+
+  <div class="section-title">Consulta Manual — Tabela Completa</div>
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="🔍  Buscar por código ou descrição..." oninput="render()">
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="count" id="count"></div>
+  <div class="table-card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Cód. Alfa</th><th>Categoria</th><th>Cód. Num.</th><th>Descrição da Falha</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer">Sotreq · S11D · 794AC · Cartão SIMS Caterpillar</div>
+</div>
+
+<script>
+// ===================== REGRAS DE IDENTIFICAÇÃO =====================
+var regras = [
+  // VAZAMENTOS
+  { codigo:"C17", desc:"VAZA ÓLEO OU LUBRIFICANTE", palavras:["vaza óleo","vazamento de óleo","vaza lubrificante","vazamento óleo","vaza oleo","vazamento oleo","derramamento de óleo","extravasamento óleo"], complementares:[], dica:"Identifique a origem exata do vazamento e se há dano no componente." },
+  { codigo:"C18", desc:"VAZA ÁGUA", palavras:["vaza agua","vazamento de agua","vazamento agua","vaza liquido de arrefecimento","vazamento arrefecimento","vaza coolant","vaza liquido","vazamento elc","vaza elc","vaza de elc","perda de elc","elc vazando","elc extravasando","vazamento de elc","liquido de arrefecimento vazando","arrefecimento vazando","coolant vazando","perda de coolant","vazamento coolant","vaza fluido de arrefecimento","vazamento fluido arrefecimento","liquido arrefecedor","liquido arrefecimento","vazamento de liquido arrefecedor","vazamento liquido arrefecedor","vazamento de liquido de arrefecimento","vazamento liquido arrefecimento","vaza liquido arrefecedor","vaza liquido arrefecimento","fluido arrefecedor","vazamento fluido arrefecedor","perda de liquido arrefecedor","perda liquido arrefecimento","liquido de arrefecedor","vaza agua","vaza h2o"], complementares:[], dica:"Verifique mangueiras, conexoes e componentes do sistema de arrefecimento. ELC = Extended Life Coolant (liquido de arrefecimento do 794AC)." },
+  { codigo:"C16", desc:"VAZA AR OU GASES", palavras:["vaza ar","vazamento de ar","fuga de ar","vaza gas","vazamento ar","perda de ar","fuga ar"], complementares:[], dica:"Verifique pressão do sistema e integridade das mangueiras de ar." },
+  { codigo:"C19", desc:"VAZA COMBUSTÍVEL", palavras:["vaza combustível","vazamento combustivel","vaza combustivel","vazamento de combustível","fuga combustivel"], complementares:[], dica:"Atenção: risco de incêndio. Isole a máquina imediatamente." },
+  { codigo:"C67", desc:"UMEDECE", palavras:["umedece","umidade","molhado","úmido","umido","exsuda","micro vazamento","micro-vazamento"], complementares:[], dica:"Verificar se há progressão para vazamento real." },
+
+  // ESTRUTURAL
+  { codigo:"A10", desc:"QUEBRADO", palavras:["quebrado","quebrada","quebrou","fraturado","fratura","partido","partida","partiu","rompeu estruturalmente"], complementares:[], dica:"Verificar causa raiz — impacto, fadiga ou defeito de material." },
+  { codigo:"A11", desc:"TRINCADO", palavras:["trincado","trincada","trinca","fissura","rachado","rachadura","crack"], complementares:[], dica:"Avaliar extensão da trinca antes de definir reparo ou substituição." },
+  { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
+  { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado","cortado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
+  { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
+  { codigo:"A23", desc:"SEPARADO", palavras:["separado","separada","separou","desconectado","desconectada","soltou","desprendeu","caiu","desprendido"], complementares:[], dica:"Verificar causa da separação — fadiga, vibração ou fixação inadequada." },
+  { codigo:"A26", desc:"MACHUCADO", palavras:["danificado","danificada","dano físico","avariado","avariada","machucado","machucada","com dano","com avaria","danos físicos","fisicamente danificado"], complementares:[], dica:"Avaliar extensão do dano e necessidade de substituição." },
+  { codigo:"A27", desc:"TERMINAL DANIFICADO", palavras:["terminal danificado","terminal com dano","conector danificado","conector com dano","pino danificado","pino dobrado"], complementares:[], dica:"Verificar continuidade elétrica após reparo do terminal." },
+
+  // DEFEITO SUPERFICIAL
+  { codigo:"B13", desc:"DESGASTADO", palavras:["desgastado","desgastada","desgaste","desgastou","desgaste por atrito","ressecado","ressecada","ressecamento","deteriorado","deteriorada","deterioração","envelhecido","envelhecida","gasto","gasta"], complementares:[], dica:"Identificar causa do desgaste para evitar reincidência." },
+  { codigo:"B2", desc:"RISCADO/ENTALHADO", palavras:["riscado","riscada","risco","entalhe","entalhado","marcas de atrito","abrasão superficial"], complementares:[], dica:"Verificar se o risco compromete vedação ou estrutura." },
+  { codigo:"B3", desc:"ENFERRUJADO/CORROÍDO", palavras:["enferrujado","enferrujada","ferrugem","corroído","corroída","corrosão","oxidado","oxidada","oxidação"], complementares:[], dica:"Tratar a corrosão e aplicar proteção para evitar progressão." },
+  { codigo:"B62", desc:"SUJEIRA OU MATERIAL ESTRANHO", palavras:["sujeira","material estranho","contaminação","contaminado","poeira","acúmulo de material","entupido","obstruído","resíduo","partícula"], complementares:[], dica:"Limpar e identificar origem da contaminação." },
+  { codigo:"B90", desc:"DEFEITO DE FUNDIÇÃO", palavras:["bolhas","porosidade","defeito de fundição","defeito no material","incluso","inclusão","falha interna","defeito interno","falha de material"], complementares:[], dica:"Analisar o componente para confirmar defeito de fabricação antes de acionar garantia." },
+  { codigo:"B51", desc:"AGARRA OU PRENDE", palavras:["agarra","prende","travado","travada","emperrado","emperrada","grippado","gripado","engripado","trava","preso"], complementares:[], dica:"Verificar lubrificação e tolerâncias do componente." },
+
+  // FERRAGEM
+  { codigo:"P22", desc:"FERRAGEM SOLTA OU FALTANTE", palavras:["parafuso faltando","parafuso ausente","porca faltando","abraçadeira faltando","suporte faltando","fixação faltante","sem parafuso","sem abraçadeira","ferragem faltante","faltando parafuso","falta parafuso","falta abraçadeira","ausência de parafuso","ausência de abraçadeira","sem fixação","fixação ausente","ferragem solta","parafuso solto","porca solta","abraçadeira solta"], complementares:[], dica:"Verificar torque de aperto após instalação conforme especificação Cat." },
+
+  // MAU FUNCIONAMENTO
+  { codigo:"E52", desc:"RUIDOSO", palavras:["ruído","barulho","barulhento","ruidoso","rangido","chiado","batida","estrondo","som anormal","ruído anormal","barulho anormal","noise"], complementares:[], dica:"Identificar origem e frequência do ruído para diagnóstico preciso." },
+  { codigo:"E53", desc:"SUPERAQUECIMENTO", palavras:["superaquecimento","superaquecendo","temperatura alta","sobreaquecimento","aquecimento excessivo","overheating","temp alta","high temp"], complementares:[], dica:"Verificar sistema de arrefecimento, nível de fluido e circulação." },
+  { codigo:"E70", desc:"DIFÍCIL DE DAR PARTIDA", palavras:["difícil de dar partida","não dá partida","não parte","não liga","falha na partida","problema partida","não consegue dar partida"], complementares:[], dica:"Verificar bateria, motor de partida e sistema elétrico." },
+  { codigo:"E72", desc:"BAIXA POTÊNCIA", palavras:["baixa potência","perda de potência","sem força","fraco","motor fraco","falta potência","potência reduzida"], complementares:[], dica:"Verificar sistema de combustível, turbo e filtros." },
+  { codigo:"E42", desc:"MAU FUNCIONAMENTO DO SISTEMA", palavras:["mau funcionamento","funcionamento irregular","não funciona corretamente","funcionando mal","problema no sistema","falha no sistema","sistema com defeito"], complementares:[], dica:"Registrar sintomas detalhados para facilitar o diagnóstico." },
+  { codigo:"E66", desc:"PRESSÃO MUITO BAIXA", palavras:["pressão baixa","baixa pressão","sem pressão suficiente","queda de pressão","pressão insuficiente"], complementares:[], dica:"Verificar bomba, filtros e possíveis vazamentos no circuito." },
+  { codigo:"E65", desc:"PRESSÃO MUITO ALTA", palavras:["pressão alta","alta pressão","pressão excessiva","sobrepressão"], complementares:[], dica:"Verificar válvula de alívio e regulagem do sistema." },
+  { codigo:"E63", desc:"CONSUMO EXCESSIVO DE ÓLEO", palavras:["consumo excessivo de óleo","consumindo muito óleo","perdendo óleo","óleo sumindo","alto consumo de óleo"], complementares:[], dica:"Verificar vedações internas e sistema de respiro." },
+  { codigo:"E55", desc:"FAZ MUITA FUMAÇA", palavras:["fumaça","fumando","emitindo fumaça","fumaça preta","fumaça branca","fumaça azul","muita fumaça"], complementares:[], dica:"Identificar cor da fumaça — indica origem do problema." },
+  { codigo:"E31", desc:"EM CURTO CIRCUITO", palavras:["curto circuito","curto-circuito","em curto","short circuit","curto"], complementares:[], dica:"Verificar fiação e isolamento dos cabos antes de energizar." },
+  { codigo:"E32", desc:"CIRCUITO ABERTO", palavras:["circuito aberto","open circuit","fio partido","cabo partido","fio rompido","interrompido eletricamente"], complementares:[], dica:"Testar continuidade do circuito com multímetro." },
+
+  // AJUSTAGEM
+  { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
+
+  // MONTAGEM
+  { codigo:"D93", desc:"MAL POSICIONADO", palavras:["mal posicionado","mal instalado","posição incorreta","instalado errado","posicionamento incorreto","montado errado","instalação incorreta","posição errada"], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },
+  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
+
+  // NÍVEL / FLUIDO
+  { codigo:"L29", desc:"NÍVEL ERRADO DE FLUIDO", palavras:["nível baixo","nível alto","nível errado","nível incorreto","falta de fluido","fluido insuficiente","pouco fluido","nível fora"], complementares:[], dica:"Corrigir nível conforme OMM e verificar causa da variação." },
+  { codigo:"M30", desc:"FLUIDO ERRADO", palavras:["fluido errado","óleo errado","fluido incorreto","óleo incorreto","produto errado","lubrificante errado","combustível errado"], complementares:[], dica:"Drenar e substituir com fluido correto conforme especificação Cat." },
+
+  // PEÇA
+  { codigo:"R82", desc:"PEÇA ERRADA OU FALTANTE", palavras:["peça errada","peça faltante","peça incorreta","componente errado","peça não aplicável","número de peça errado"], complementares:[], dica:"Verificar número de peça no Parts Book antes de instalar." },
+
+  // VANDALISMO / ABUSO
+  { codigo:"N8", desc:"ACIDENTE OU ABUSO", palavras:["acidente","impacto","colisão","batida","abuso","uso indevido","operação incorreta","negligência","operador"], complementares:[], dica:"Documentar com fotos e registrar ocorrência formal." },
+
+  // INTERFERÊNCIA
+  { codigo:"Y79", desc:"INTERFERÊNCIA", palavras:["interferência","atrito entre componentes","roçando","roça","contato indevido","tocando em outro componente","encostando"], complementares:[], dica:"Verificar fixação e roteamento correto de mangueiras e cabos." },
+
+  // SERVIÇABILIDADE
+  { codigo:"K80", desc:"DIFÍCIL DE ACESSAR", palavras:["difícil acesso","difícil de acessar","acesso difícil","sem acesso","acesso restrito","difícil manutenção"], complementares:[], dica:"Registrar para avaliação de melhoria de serviceabilidade." },
+];
+
+// Regras de complementares baseadas em combinações
+var complementaresEspeciais = [
+  { gatilho: ["atrito","abraçadeira","mangote","mangueira"], principal:"B13", complementares:[{c:"P22",d:"Abraçadeira mal posicionada ou faltante foi a causa raiz do atrito"}] },
+  { gatilho: ["atrito","abraçadeira"], principal:"B13", complementares:[{c:"P22",d:"Ausência ou mau posicionamento de abraçadeira causou o atrito"}] },
+  { gatilho: ["desalinhado","porta","barulho"], principal:"H91", complementares:[{c:"E52",d:"Barulho resultante do desalinhamento"},{c:"B62",d:"Entrada de poeira/material estranho pela folga"}] },
+  { gatilho: ["desalinhado","barulho","poeira"], principal:"H91", complementares:[{c:"E52",d:"Barulho anormal pelo desalinhamento"},{c:"B62",d:"Entrada de sujeira/poeira"}] },
+  { gatilho: ["mangueira","ressecada"], principal:"B13", complementares:[{c:"C17",d:"Risco de vazamento futuro pelo ressecamento"},{c:"A15",d:"Se já houver fissura ou rasgo visível"}] },
+  { gatilho: ["mangueira","ressecada","água"], principal:"B13", complementares:[{c:"C18",d:"Risco de vazamento de água pelo ressecamento"}] },
+  { gatilho: ["parafuso","faltando","lataria"], principal:"P22", complementares:[] },
+  { gatilho: ["suporte","faltando","mangueira"], principal:"P22", complementares:[{c:"B13",d:"Dano nas mangueiras causado pela falta de fixação"}] },
+  { gatilho: ["fechadura","danificada"], principal:"A26", complementares:[] },
+  { gatilho: ["lâmpada","quebrada","mal posicionado"], principal:"A10", complementares:[{c:"D93",d:"Componente do lado direito mal posicionado"}] },
+  { gatilho: ["bolhas","mangueira"], principal:"B90", complementares:[{c:"A15",d:"Se houver fissura/ruptura visível"},{c:"C17",d:"Se houver vazamento associado"}] },
+];
+
+function normalizar(txt) {
+  return txt.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9\s]/g," ");
+}
+
+function identificar() {
+  var texto = document.getElementById("ia-input").value.trim();
+  if (!texto) { alert("Por favor, insira a descrição da falha."); return; }
+
+  var textoNorm = normalizar(texto);
+  var resultEl = document.getElementById("ia-result");
+  resultEl.style.display = "block";
+
+  // Verificar complementares especiais primeiro
+  var complementaresEncontrados = [];
+  var principalEspecial = null;
+  for (var i = 0; i < complementaresEspeciais.length; i++) {
+    var ce = complementaresEspeciais[i];
+    var todosPresentes = true;
+    for (var g = 0; g < ce.gatilho.length; g++) {
+      if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) { todosPresentes = false; break; }
+    }
+    if (todosPresentes) {
+      principalEspecial = ce.principal;
+      complementaresEncontrados = ce.complementares;
+      break;
+    }
+  }
+
+  // Encontrar todos os códigos que batem
+  var encontrados = [];
+  for (var j = 0; j < regras.length; j++) {
+    var r = regras[j];
+    for (var k = 0; k < r.palavras.length; k++) {
+      if (textoNorm.indexOf(normalizar(r.palavras[k])) !== -1) {
+        encontrados.push(r);
+        break;
+      }
+    }
+  }
+
+  if (encontrados.length === 0) {
+    resultEl.innerHTML = "<div class='nenhum'>⚠️ Nenhum código identificado automaticamente. Tente descrever a falha com mais detalhes ou consulte a tabela abaixo manualmente.</div>";
+    return;
+  }
+
+  // Principal = primeiro encontrado (ou o especial)
+  var principal = encontrados[0];
+  if (principalEspecial) {
+    for (var m = 0; m < regras.length; m++) {
+      if (regras[m].codigo === principalEspecial) { principal = regras[m]; break; }
+    }
+  }
+
+  // Montar HTML
+  var html = "";
+  html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</div>";
+
+  // Complementares
+  var comps = complementaresEncontrados.length > 0 ? complementaresEncontrados : [];
+  // Adicionar outros encontrados como complementares
+  for (var n = 0; n < encontrados.length; n++) {
+    if (encontrados[n].codigo !== principal.codigo) {
+      var jaExiste = false;
+      for (var x = 0; x < comps.length; x++) { if(comps[x].c === encontrados[n].codigo) { jaExiste=true; break; } }
+      if (!jaExiste) comps.push({c: encontrados[n].codigo, d: encontrados[n].desc});
+    }
+  }
+
+  if (comps.length > 0) {
+    var compHtml = "<div class='codigo-complementar'><strong>🟡 COMPLEMENTAR(ES):</strong><br>";
+    for (var p = 0; p < comps.length; p++) {
+      compHtml += "• <strong>" + comps[p].c + "</strong> — " + comps[p].d + "<br>";
+    }
+    compHtml += "</div>";
+    html += compHtml;
+  }
+
+  html += "<div class='dica'>💡 <strong>Dica:</strong> " + principal.dica + "</div>";
+  resultEl.innerHTML = html;
+}
+
+// ===================== TABELA =====================
+var data = [
+  ["A","ESTRUTURAL","10","QUEBRADO"],["A","ESTRUTURAL","11","TRINCADO"],["A","ESTRUTURAL","12","EMPENADO OU TORCIDO"],["A","ESTRUTURAL","14","DOBRADO/AFUNDADO"],["A","ESTRUTURAL","15","ROMPIDO OU RASGADO"],["A","ESTRUTURAL","21","ROSCAS ESPANADAS"],["A","ESTRUTURAL","23","SEPARADO"],["A","ESTRUTURAL","24","ESTICADO"],["A","ESTRUTURAL","25","CORTADO"],["A","ESTRUTURAL","26","MACHUCADO"],["A","ESTRUTURAL","27","FALHA DE SOLDA"],["A","ESTRUTURAL","27","TERMINAL DANIFICADO"],
+  ["B","DEFEITO SUPERFICIAL","2","RISCADO/ENTALHADO"],["B","DEFEITO SUPERFICIAL","1","CORROÍDO/LASCADO"],["B","DEFEITO SUPERFICIAL","3","ENFERRUJADO/CORROÍDO"],["B","DEFEITO SUPERFICIAL","4","PROBLEMA DE METALIZAÇÃO"],["B","DEFEITO SUPERFICIAL","5","ÁSPERO OU IRREGULAR"],["B","DEFEITO SUPERFICIAL","7","TRANSFERÊNCIA DE MATERIAL"],["B","DEFEITO SUPERFICIAL","9","CONDENSAÇÃO"],["B","DEFEITO SUPERFICIAL","13","DESGASTADO"],["B","DEFEITO SUPERFICIAL","51","AGARRA OU PRENDE"],["B","DEFEITO SUPERFICIAL","59","MAU ASSENTAMENTO"],["B","DEFEITO SUPERFICIAL","62","SUJEIRA OU MATERIAL ESTRANHO"],["B","DEFEITO SUPERFICIAL","90","DEFEITO DE FUNDIÇÃO"],
+  ["C","VAZAMENTOS","17","VAZA ÓLEO OU LUBRIFICANTE"],["C","VAZAMENTOS","16","VAZA AR OU GASES"],["C","VAZAMENTOS","18","VAZA ÁGUA"],["C","VAZAMENTOS","19","VAZA COMBUSTÍVEL"],["C","VAZAMENTOS","67","UMEDECE"],
+  ["D","MONTAGEM DE FÁBRICA","81","OPERAÇÃO OMITIDA"],["D","MONTAGEM DE FÁBRICA","84","MUITO GRANDE OU COMPRIDO"],["D","MONTAGEM DE FÁBRICA","85","MUITO PEQUENO OU CURTO"],["D","MONTAGEM DE FÁBRICA","86","QUEBRADIÇO/MUITO DURO"],["D","MONTAGEM DE FÁBRICA","87","MUITO MOLE"],["D","MONTAGEM DE FÁBRICA","88","NÃO REDONDO/FORA DE CENTRO"],["D","MONTAGEM DE FÁBRICA","89","LUBRIFICANTE INAPROPRIADO"],["D","MONTAGEM DE FÁBRICA","92","USINAGEM DEFICIENTE"],["D","MONTAGEM DE FÁBRICA","93","MAL POSICIONADO"],["D","MONTAGEM DE FÁBRICA","95","DANO DE MONTAGEM"],
+  ["E","MAU FUNCIONAMENTO","42","MAU FUNCIONAMENTO DO SISTEMA"],["E","MAU FUNCIONAMENTO","31","EM CURTO CIRCUITO"],["E","MAU FUNCIONAMENTO","32","CIRCUITO ABERTO"],["E","MAU FUNCIONAMENTO","33","CÉLULA INATIVA"],["E","MAU FUNCIONAMENTO","35","SOBRECARGA"],["E","MAU FUNCIONAMENTO","36","BAIXA CARGA"],["E","MAU FUNCIONAMENTO","37","DEFEITO DE SOFTWARE"],["E","MAU FUNCIONAMENTO","41","FALHA NO TESTE DE CARGA DE PARTIDA"],["E","MAU FUNCIONAMENTO","43","HESITAÇÃO"],["E","MAU FUNCIONAMENTO","44","TROCA DE MARCHA IRREGULAR"],["E","MAU FUNCIONAMENTO","45","DIFÍCIL DE ENGATAR"],["E","MAU FUNCIONAMENTO","46","DESCARREGA-SE"],["E","MAU FUNCIONAMENTO","47","FREIA COM DIFICULDADE"],["E","MAU FUNCIONAMENTO","48","DIREÇÃO DIFÍCIL"],["E","MAU FUNCIONAMENTO","52","RUIDOSO"],["E","MAU FUNCIONAMENTO","53","SUPERAQUECIMENTO"],["E","MAU FUNCIONAMENTO","54","VIBRA/TREME"],["E","MAU FUNCIONAMENTO","55","FAZ MUITA FUMAÇA"],["E","MAU FUNCIONAMENTO","57","TAMPADO/CONFINADO"],["E","MAU FUNCIONAMENTO","58","SOLTO OU DESLIZANTE"],["E","MAU FUNCIONAMENTO","60","IMPOSSÍVEL DE AJUSTAR"],["E","MAU FUNCIONAMENTO","63","CONSUMO EXCESSIVO DE ÓLEO"],["E","MAU FUNCIONAMENTO","64","FLUTUA"],["E","MAU FUNCIONAMENTO","65","PRESSÃO MUITO ALTA"],["E","MAU FUNCIONAMENTO","66","PRESSÃO MUITO BAIXA"],["E","MAU FUNCIONAMENTO","68","PRESSÃO EXCESSIVA NO CÁRTER"],["E","MAU FUNCIONAMENTO","69","SEM PRESSÃO"],["E","MAU FUNCIONAMENTO","70","DIFÍCIL DE DAR PARTIDA"],["E","MAU FUNCIONAMENTO","71","TEMPO DE CICLO ERRADO"],["E","MAU FUNCIONAMENTO","72","BAIXA POTÊNCIA"],["E","MAU FUNCIONAMENTO","73","OPERAÇÃO IRREGULAR"],["E","MAU FUNCIONAMENTO","77","EXCESSO DE ROTAÇÃO"],["E","MAU FUNCIONAMENTO","78","DANO DISSIMULADO"],["E","MAU FUNCIONAMENTO","97","EMISSÕES"],["E","MAU FUNCIONAMENTO","99","DEFEITO INDEFINIDO"],
+  ["F","EMBARQUE DE FÁBRICA","94","DANOS DE TRANSPORTE"],["G","REPARO GERAL","49","REPARO GERAL"],["G","REPARO GERAL","0","NÃO FORNECIDO"],["H","AJUSTAGEM","91","AJUSTAGEM INAPROPRIADA"],["J","PINTURA","6","PINTURA INSATISFATÓRIA"],["K","SERVIÇABILIDADE","80","DIFÍCIL DE ACESSAR"],["L","NÍVEL DE FLUIDO","29","NÍVEL ERRADO DE FLUIDO"],["M","FLUIDO ERRADO","30","FLUIDO ERRADO"],["N","VANDALISMO/ABUSO","8","ACIDENTE OU ABUSO"],["N","VANDALISMO/ABUSO","RD","DANO RESULTANTE"],["P","FERRAGEM","22","FERRAGEM SOLTA OU FALTANTE"],["Q","SOLDA","83","SOLDA INSATISFATÓRIA"],["R","PEÇA","82","PEÇA ERRADA OU FALTANTE"],["T","SOLICITAÇÃO FÁBRICA","56","SOLICITAÇÃO DA FÁBRICA"],["U","SUBSTITUIÇÃO","61","SUBSTITUIÇÃO DE COMPONENTE"],["W","REL. SUPLEMENTAR","98","RECLAMAÇÃO SUPLEMENTAR"],["Y","INTERFERÊNCIA","79","INTERFERÊNCIA"],["Z","PROG. SUPORTE","96","PROGRAMA DE SUPORTE AO PRODUTO"]
+];
+
+var active = "ALL";
+
+function init() {
+  var cats=[];
+  for(var i=0;i<data.length;i++) if(cats.indexOf(data[i][0])===-1) cats.push(data[i][0]);
+  var filtersEl=document.getElementById("filters");
+  filtersEl.innerHTML="";
+  var allChip=document.createElement("span");
+  allChip.className="chip active";allChip.textContent="Todos";allChip.setAttribute("data-cat","ALL");
+  allChip.onclick=function(){active="ALL";updateChips();render();};
+  filtersEl.appendChild(allChip);
+  for(var j=0;j<cats.length;j++){
+    (function(cat){
+      var label="";for(var k=0;k<data.length;k++){if(data[k][0]===cat){label=data[k][1];break;}}
+      var chip=document.createElement("span");
+      chip.className="chip";chip.textContent=cat+" — "+label;chip.setAttribute("data-cat",cat);
+      chip.onclick=function(){active=cat;updateChips();render();};
+      filtersEl.appendChild(chip);
+    })(cats[j]);
+  }
+  render();
+}
+
+function updateChips(){
+  var chips=document.querySelectorAll(".chip");
+  for(var i=0;i<chips.length;i++) chips[i].className=chips[i].getAttribute("data-cat")===active?"chip active":"chip";
+}
+
+function render(){
+  var q=document.getElementById("search").value.toLowerCase();
+  var rows=[];
+  for(var i=0;i<data.length;i++){
+    var d=data[i];
+    if((active==="ALL"||d[0]===active)&&(!q||(d[0]+d[1]+d[2]+d[3]).toLowerCase().indexOf(q)!==-1)) rows.push(d);
+  }
+  document.getElementById("count").textContent=rows.length+" código(s) encontrado(s)";
+  var html="";
+  for(var j=0;j<rows.length;j++){
+    var r=rows[j];
+    html+="<tr><td><span class='badge badge-"+r[0]+"'>"+r[0]+"</span></td><td style='color:#666;font-size:12px;'>"+r[1]+"</td><td style='font-weight:700;'>"+r[2]+"</td><td>"+r[3]+"</td></tr>";
+  }
+  document.getElementById("tbody").innerHTML=html;
+}
+
+window.onload=init;
+</script>
+</body>
+</html>
