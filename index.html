@@ -100,7 +100,7 @@ var regras = [
   { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
   { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado","cortado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
   { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
-  { codigo:"A23", desc:"SEPARADO", palavras:["separado","separada","separou","desconectado","desconectada","soltou","desprendeu","caiu","desprendido"], complementares:[], dica:"Verificar causa da separação — fadiga, vibração ou fixação inadequada." },
+  { codigo:"A23", desc:"SEPARADO", palavras:["componente separado","peca separada","desconectado","desconectada","soltou do conjunto","desprendeu","caiu do conjunto","desprendido","separou do conjunto","separou da estrutura"], complementares:[], dica:"Verificar causa da separacao — fadiga, vibracao ou fixacao inadequada." },
   { codigo:"A26", desc:"MACHUCADO", palavras:["danificado","danificada","dano físico","avariado","avariada","machucado","machucada","com dano","com avaria","danos físicos","fisicamente danificado"], complementares:[], dica:"Avaliar extensão do dano e necessidade de substituição." },
   { codigo:"A27", desc:"TERMINAL DANIFICADO", palavras:["terminal danificado","terminal com dano","conector danificado","conector com dano","pino danificado","pino dobrado"], complementares:[], dica:"Verificar continuidade elétrica após reparo do terminal." },
 
@@ -137,7 +137,7 @@ var regras = [
 
   // NÍVEL / FLUIDO
   { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
-  { codigo:"M30", desc:"FLUIDO ERRADO", palavras:["fluido errado","óleo errado","fluido incorreto","óleo incorreto","produto errado","lubrificante errado","combustível errado"], complementares:[], dica:"Drenar e substituir com fluido correto conforme especificação Cat." },
+  { codigo:"M30", desc:"FLUIDO ERRADO", palavras:["fluido errado","oleo errado","fluido incorreto","oleo incorreto","produto errado","lubrificante errado","combustivel errado","agua no combustivel","agua no oleo","contaminacao de combustivel","combustivel contaminado","oleo contaminado","agua no sistema","agua misturada","eventos de agua","agua detectada","presenca de agua","agua no filtro","filtro separador","drenar agua","drenagem de agua","agua no tanque","contaminacao por agua","mistura de agua"], complementares:[], dica:"Drenar e substituir com fluido correto conforme especificacao Cat. Para agua no combustivel: drenar filtro separador e verificar origem da contaminacao." },
 
   // PEÇA
   { codigo:"R82", desc:"PEÇA ERRADA OU FALTANTE", palavras:["peça errada","peça faltante","peça incorreta","componente errado","peça não aplicável","número de peça errado"], complementares:[], dica:"Verificar número de peça no Parts Book antes de instalar." },
@@ -160,6 +160,8 @@ var complementaresEspeciais = [
   { gatilho: ["temperatura","diminuiu"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular do sistema de arrefecimento — valvula termostatica possivelmente travada aberta"}] },
   { gatilho: ["e-stat"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
   { gatilho: ["estat"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
+  { gatilho: ["agua","combustivel"], principal:"M30", complementares:[{c:"C18",d:"Verificar origem da agua — possivel infiltracao no sistema"}] },
+  { gatilho: ["agua","oleo"], principal:"M30", complementares:[{c:"C18",d:"Verificar origem da contaminacao por agua"}] },
   { gatilho: ["temperatura","motor","diminuiu"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular do sistema — verificar valvula termostatica travada aberta"},{c:"E53",d:"Monitorar para verificar se ha tambem superaquecimento"}] },
   { gatilho: ["atrito","abraçadeira","mangote","mangueira"], principal:"B13", complementares:[{c:"P22",d:"Abraçadeira mal posicionada ou faltante foi a causa raiz do atrito"}] },
   { gatilho: ["atrito","abraçadeira"], principal:"B13", complementares:[{c:"P22",d:"Ausência ou mau posicionamento de abraçadeira causou o atrito"}] },
