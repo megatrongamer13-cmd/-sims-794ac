@@ -136,7 +136,7 @@ var regras = [
   { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
   // NÍVEL / FLUIDO
-  { codigo:"L29", desc:"NÍVEL ERRADO DE FLUIDO", palavras:["nível baixo","nível alto","nível errado","nível incorreto","falta de fluido","fluido insuficiente","pouco fluido","nível fora"], complementares:[], dica:"Corrigir nível conforme OMM e verificar causa da variação." },
+  { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
   { codigo:"M30", desc:"FLUIDO ERRADO", palavras:["fluido errado","óleo errado","fluido incorreto","óleo incorreto","produto errado","lubrificante errado","combustível errado"], complementares:[], dica:"Drenar e substituir com fluido correto conforme especificação Cat." },
 
   // PEÇA
@@ -154,6 +154,9 @@ var regras = [
 
 // Regras de complementares baseadas em combinações
 var complementaresEspeciais = [
+  { gatilho: ["nivel","combustivel","sensor"], principal:"L29", complementares:[{c:"E42",d:"Sensor de nivel com mau funcionamento"},{c:"B51",d:"Sensor travado/preso fisicamente"}] },
+  { gatilho: ["nivel","combustivel","travado"], principal:"L29", complementares:[{c:"B51",d:"Sensor travado causando leitura incorreta de nivel"},{c:"E42",d:"Mau funcionamento do sistema de nivel"}] },
+  { gatilho: ["baixo nivel","combustivel"], principal:"L29", complementares:[{c:"E42",d:"Verificar sensor de nivel se eventos ocorrem em periodo curto"}] },
   { gatilho: ["atrito","abraçadeira","mangote","mangueira"], principal:"B13", complementares:[{c:"P22",d:"Abraçadeira mal posicionada ou faltante foi a causa raiz do atrito"}] },
   { gatilho: ["atrito","abraçadeira"], principal:"B13", complementares:[{c:"P22",d:"Ausência ou mau posicionamento de abraçadeira causou o atrito"}] },
   { gatilho: ["desalinhado","porta","barulho"], principal:"H91", complementares:[{c:"E52",d:"Barulho resultante do desalinhamento"},{c:"B62",d:"Entrada de poeira/material estranho pela folga"}] },
