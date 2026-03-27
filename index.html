@@ -95,8 +95,27 @@ var regras = [
   { codigo:"C67", desc:"UMEDECE", palavras:["umedece","umidade","molhado","úmido","umido","exsuda","micro vazamento","micro-vazamento"], complementares:[], dica:"Verificar se há progressão para vazamento real." },
 
   // ESTRUTURAL
-  { codigo:"A10", desc:"QUEBRADO", palavras:["quebrado","quebrada","quebrou","fraturado","fratura","partido","partida","partiu","rompeu estruturalmente"], complementares:[], dica:"Verificar causa raiz — impacto, fadiga ou defeito de material." },
-  { codigo:"A11", desc:"TRINCADO", palavras:["trincado","trincada","trinca","fissura","rachado","rachadura","crack"], complementares:[], dica:"Avaliar extensão da trinca antes de definir reparo ou substituição." },
+{ codigo:"A26", desc:"MACHUCADO", palavras:[
+  "danificado",
+  "danificada",
+  "danificados",
+  "danificadas",
+  "dano físico",
+  "avariado",
+  "avariada",
+  "machucado",
+  "machucada",
+  "com dano",
+  "com avaria",
+  "danos físicos",
+  "fisicamente danificado",
+  "cabo danificado",
+  "chicote danificado",
+  "fio danificado",
+  "isolacao danificada",
+  "isolamento danificado",
+  "cabo deteriorado"
+], complementares:[], dica:"Avaliar extensão do dano e necessidade de substituição." }  { codigo:"A11", desc:"TRINCADO", palavras:["trincado","trincada","trinca","fissura","rachado","rachadura","crack"], complementares:[], dica:"Avaliar extensão da trinca antes de definir reparo ou substituição." },
   { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
   { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado","cortado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
   { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
@@ -283,7 +302,7 @@ function identificar() {
   }
 
   // Principal = primeiro encontrado (ou o especial)
-  var principal = encontrados[0];
+  // 🔥 PRIORIDADE INTELIGENTE var prioridade = ["A26","B13","A15","A10"];  var principal = encontrados[0];  for (var p = 0; p < prioridade.length; p++) {   for (var i = 0; i < encontrados.length; i++) {     if (encontrados[i].codigo === prioridade[p]) {       principal = encontrados[i];       break;     }   } }
   if (principalEspecial) {
     for (var m = 0; m < regras.length; m++) {
       if (regras[m].codigo === principalEspecial) { principal = regras[m]; break; }
