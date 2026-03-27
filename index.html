@@ -109,7 +109,25 @@ var regras = [
   { codigo:"B2", desc:"RISCADO/ENTALHADO", palavras:["riscado","riscada","risco","entalhe","entalhado","marcas de atrito","abrasão superficial"], complementares:[], dica:"Verificar se o risco compromete vedação ou estrutura." },
   { codigo:"B3", desc:"ENFERRUJADO/CORROÍDO", palavras:["enferrujado","enferrujada","ferrugem","corroído","corroída","corrosão","oxidado","oxidada","oxidação"], complementares:[], dica:"Tratar a corrosão e aplicar proteção para evitar progressão." },
   { codigo:"B62", desc:"SUJEIRA OU MATERIAL ESTRANHO", palavras:["sujeira","material estranho","contaminacao","contaminado","acumulo de material","entupido","obstruido","residuo","particula","acumulo de poeira","entrada de poeira","poeira acumulada","contaminado por poeira","limalha","limalhas","limalha ferrosa","limalhas ferrosas","particulas metalicas","particula metalica","metal no oleo","ferro no oleo","particulas de ferro","amostra sos","sos","analise sos","resultado sos","amostra de oleo","analise de oleo","oleo com particulas","particulas no oleo","debris","debris metalico","debris ferroso","contaminacao metalica","material ferroso","fragmento metalico","fragmentos metalicos","cavaco","cavacos","abrasivos no oleo","particulas abrasivas"], complementares:[], dica:"Resultado de SOS com limalhas indica desgaste interno de componente. Identificar origem das particulas e inspecionar componentes do sistema hidraulico." },
-  { codigo:"B90", desc:"DEFEITO DE FUNDIÇÃO", palavras:["bolhas","porosidade","defeito de fundição","defeito no material","incluso","inclusão","falha interna","defeito interno","falha de material"], complementares:[], dica:"Analisar o componente para confirmar defeito de fabricação antes de acionar garantia." },
+  { codigo:"B90", desc:"DEFEITO DE FUNDIÇÃO", palavras:[
+  "bolha",
+  "bolhas",
+  "bolha na mangueira",
+  "bolha no terminal",
+  "bolha proximo",
+  "bolha próximo",
+  "mangueira com bolha",
+  "mangueira estufada",
+  "mangueira inchada",
+  "porosidade",
+  "defeito de fundição",
+  "defeito no material",
+  "incluso",
+  "inclusão",
+  "falha interna",
+  "defeito interno",
+  "falha de material"
+], complementares:[], dica:"Analisar o componente para confirmar defeito de fabricação antes de acionar garantia." },
   { codigo:"B51", desc:"AGARRA OU PRENDE", palavras:["agarra","prende","travado","travada","emperrado","emperrada","grippado","gripado","engripado","trava","preso"], complementares:[], dica:"Verificar lubrificação e tolerâncias do componente." },
 
   // FERRAGEM
@@ -214,7 +232,7 @@ var complementaresEspeciais = [
   { gatilho: ["suporte","faltando","mangueira"], principal:"P22", complementares:[{c:"B13",d:"Dano nas mangueiras causado pela falta de fixação"}] },
   { gatilho: ["fechadura","danificada"], principal:"A26", complementares:[] },
   { gatilho: ["lâmpada","quebrada","mal posicionado"], principal:"A10", complementares:[{c:"D93",d:"Componente do lado direito mal posicionado"}] },
-  { gatilho: ["bolhas","mangueira"], principal:"B90", complementares:[{c:"A15",d:"Se houver fissura/ruptura visível"},{c:"C17",d:"Se houver vazamento associado"}] },
+  { gatilho: ["bolha","mangueira"], principal:"B90", complementares:[   {c:"A15",d:"Se houver fissura ou ruptura visível"},   {c:"C17",d:"Se houver vazamento de óleo"},   {c:"C18",d:"Se houver vazamento de fluido de arrefecimento"} ] },
 ];
 
 function normalizar(txt) {
