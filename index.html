@@ -301,19 +301,35 @@ function identificar() {
     }
   }
 
-  if (encontrados.length === 0) {
+ // 🔥 SE NÃO ACHOU NAS REGRAS, MAS ACHOU REGRA ESPECIAL
+if (encontrados.length === 0 && principalEspecial) {
+    for (var m = 0; m < regras.length; m++) {
+        if (regras[m].codigo === principalEspecial) {
+            encontrados.push(regras[m]);
+            break;
+        }
+    }
+}
+
+// SE NÃO ACHOU NADA MESMO
+if (encontrados.length === 0) {
     resultEl.innerHTML = "<div class='nenhum'>⚠️ Nenhum código identificado automaticamente. Tente descrever a falha com mais detalhes ou consulte a tabela abaixo manualmente.</div>";
     return;
-  }
+}
 
   // Principal = primeiro encontrado (ou o especial)
-  var prioridade = [   "C17","C18","C16","C19",   "E31","E32","E42","E66","E65","E70",   "A26","B13","A15","A10" ];  var principal = encontrados[0];  for (var p = 0; p < prioridade.length; p++) {   for (var i = 0; i < encontrados.length; i++) {     if (encontrados[i].codigo === prioridade[p]) {       principal = encontrados[i];       break;     }   } }
-  if (principalEspecial) {
-    for (var m = 0; m < regras.length; m++) {
-      if (regras[m].codigo === principalEspecial) { principal = regras[m]; break; }
+  var prioridade = [ "C17","C18","C16","C19", "E31","E32","E42","E66","E65","E70", "A26","B13","A15","A10" ];
+
+var principal = encontrados[0];
+
+for (var p = 0; p < prioridade.length; p++) {
+  for (var x = 0; x < encontrados.length; x++) {
+    if (encontrados[x].codigo === prioridade[p]) {
+      principal = encontrados[x];
+      break;
     }
   }
-
+}
   // Montar HTML
   var html = "";
   html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</div>";
