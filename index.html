@@ -303,7 +303,7 @@ function identificar() {
   }
 
   // Principal = primeiro encontrado (ou o especial)
-  var prioridade = [   "C17","C18","C16","C19", // vazamentos primeiro   "E31","E32","E42","E66","E65","E70", // funcionamento elétrico/sistema   "A26","B13","A15","A10" // estrutural depois ];  var principal = encontrados[0];  for (var p = 0; p < prioridade.length; p++) {   for (var i = 0; i < encontrados.length; i++) {     if (encontrados[i].codigo === prioridade[p]) {       principal = encontrados[i];       break;     }   } }
+  var prioridade = [   "C17","C18","C16","C19",   "E31","E32","E42","E66","E65","E70",   "A26","B13","A15","A10" ];  var principal = encontrados[0];  for (var p = 0; p < prioridade.length; p++) {   for (var i = 0; i < encontrados.length; i++) {     if (encontrados[i].codigo === prioridade[p]) {       principal = encontrados[i];       break;     }   } }
   if (principalEspecial) {
     for (var m = 0; m < regras.length; m++) {
       if (regras[m].codigo === principalEspecial) { principal = regras[m]; break; }
