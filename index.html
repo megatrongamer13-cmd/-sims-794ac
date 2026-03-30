@@ -305,16 +305,7 @@ function normalizar(txt) {
     .replace(/[^a-z0-9\s]/g," ");
 }
 
-function identificar() {
-  var texto = document.getElementById("ia-input").value.trim();
-  if (!texto) { alert("Por favor, insira a descrição da falha."); return; }
-
-textoNorm = textoNorm
-  .replace(/danific\w*/g, "danificado")
-  .replace(/solt\w*/g, "separado")
-  .replace(/quebr\w*/g, "quebrado")
-  .replace(/rasg\w*/g, "rasgado");
-  var resultEl = document.getElementById("ia-result");
+function identificar
   resultEl.style.display = "block";
 
   // Verificar complementares especiais primeiro
