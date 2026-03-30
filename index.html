@@ -305,24 +305,42 @@ function normalizar(txt) {
     .replace(/[^a-z0-9\s]/g," ");
 }
 
-function identificar
-  resultEl.style.display = "block";
+function identificar() {
+  var texto = document.getElementById("ia-input").value.trim();
+  if (!texto) { alert("Por favor, insira a descrição da falha."); return; }
 
-  // Verificar complementares especiais primeiro
-  var complementaresEncontrados = [];
-  var principalEspecial = null;
-  for (var i = 0; i < complementaresEspeciais.length; i++) {
-    var ce = complementaresEspeciais[i];
-    var todosPresentes = true;
-    for (var g = 0; g < ce.gatilho.length; g++) {
-      if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) { todosPresentes = false; break; }
-    }
-    if (todosPresentes) {
-      principalEspecial = ce.principal;
-      complementaresEncontrados = ce.complementares;
+  var textoNorm = normalizar(texto);
+
+  textoNorm = textoNorm
+    .replace(/danific\w*/g, "danificado")
+    .replace(/solt\w*/g, "separado")
+    .replace(/quebr\w*/g, "quebrado")
+    .replace(/rasg\w*/g, "rasgado");
+
+  var resultEl = document.getElementById("ia-result");
+  resultEl.style.display = "block";
+  var resultEl = document.getElementById("ia-result");
+resultEl.style.display = "block";
+
+// 🔥 ESSA PARTE TEM QUE EXISTIR
+var complementaresEncontrados = [];
+var principalEspecial = null;
+
+for (var i = 0; i < complementaresEspeciais.length; i++) {
+  var ce = complementaresEspeciais[i];
+  var todosPresentes = true;
+  for (var g = 0; g < ce.gatilho.length; g++) {
+    if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) {
+      todosPresentes = false;
       break;
     }
   }
+  if (todosPresentes) {
+    principalEspecial = ce.principal;
+    complementaresEncontrados = ce.complementares;
+    break;
+  }
+}
 
   // Encontrar todos os códigos que batem
   var encontrados = [];
