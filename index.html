@@ -306,8 +306,7 @@ function identificar() {
   for (var j = 0; j < regras.length; j++) {
     var r = regras[j];
     for (var k = 0; k < r.palavras.length; k++) {
-      if (if ((" " + textoNorm + " ").includes(" " + normalizar(r.palavras[k]) + " ")) !== -1) {
-        encontrados.push(r);
+if ((" " + textoNorm + " ").includes(" " + normalizar(r.palavras[k]) + " ")) {        encontrados.push(r);
         break;
       }
     }
