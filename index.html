@@ -174,8 +174,20 @@ var regras = [
   { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
 
   // MONTAGEM
-  { codigo:"D93", desc:"MAL POSICIONADO", palavras:["mal posicionado","mal instalado","posição incorreta","instalado errado","posicionamento incorreto","montado errado","instalação incorreta","posição errada"], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },
-  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
+{ codigo:"D93", desc:"MAL POSICIONADO", palavras:[
+  "mal posicionado",
+  "mal posicionada",
+  "mal posicionados",
+  "mal posicionadas",
+  "mal instalado",
+  "mal instalada",
+  "mal instalados",
+  "mal instaladas",
+  "posição incorreta",
+  "posicao incorreta",
+  "instalado errado",
+  "instalada errada"
+], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
   // NÍVEL / FLUIDO
   { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
@@ -294,7 +306,7 @@ function identificar() {
   for (var j = 0; j < regras.length; j++) {
     var r = regras[j];
     for (var k = 0; k < r.palavras.length; k++) {
-      if (textoNorm.indexOf(normalizar(r.palavras[k])) !== -1) {
+      if (textoNorm.includes(normalizar(r.palavras[k])) !== -1) {
         encontrados.push(r);
         break;
       }
