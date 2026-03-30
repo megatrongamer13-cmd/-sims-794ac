@@ -120,7 +120,8 @@ var regras = [
   { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
   { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado","cortado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
   { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
-  { codigo:"A23", desc:"SEPARADO", palavras:["componente separado","peca separada","desconectado","desconectada","soltou do conjunto","desprendeu","caiu do conjunto","desprendido","separou do conjunto","separou da estrutura"], complementares:[], dica:"Verificar causa da separacao — fadiga, vibracao ou fixacao inadequada." },
+  { codigo:"A23", desc:"SEPARADO", palavras:["componente separado","peca separada","desconectado","desconectada","soltou do conjunto","desprendeu","caiu do conjunto","desprendido","separou do conjunto","separou da estrutura","soltou",
+"soltaram","soltando"], complementares:[], dica:"Verificar causa da separacao — fadiga, vibracao ou fixacao inadequada." },
   { codigo:"A10", desc:"QUEBRADO", palavras:[
   "quebrado",
   "quebrada",
@@ -137,7 +138,8 @@ var regras = [
   { codigo:"A27", desc:"TERMINAL DANIFICADO", palavras:["terminal danificado","terminal com dano","conector danificado","conector com dano","pino danificado","pino dobrado"], complementares:[], dica:"Verificar continuidade elétrica após reparo do terminal." },
 
   // DEFEITO SUPERFICIAL
-  { codigo:"B13", desc:"DESGASTADO", palavras:["desgastado","desgastada","desgaste","desgastou","desgaste por atrito","ressecado","ressecada","ressecamento","deteriorado","deteriorada","deterioração","envelhecido","envelhecida","gasto","gasta"], complementares:[], dica:"Identificar causa do desgaste para evitar reincidência." },
+  { codigo:"B13", desc:"DESGASTADO", palavras:["desgastado","desgastada","desgaste","desgastou","desgaste por atrito","ressecado","ressecada","ressecamento","deteriorado","deteriorada","deterioração","envelhecido","envelhecida","gasto","gasta","fim de vida",
+"vida util","fim de vida util","desgaste natural"], complementares:[], dica:"Identificar causa do desgaste para evitar reincidência." },
   { codigo:"B2", desc:"RISCADO/ENTALHADO", palavras:["riscado","riscada","risco","entalhe","entalhado","marcas de atrito","abrasão superficial"], complementares:[], dica:"Verificar se o risco compromete vedação ou estrutura." },
   { codigo:"B3", desc:"ENFERRUJADO/CORROÍDO", palavras:["enferrujado","enferrujada","ferrugem","corroído","corroída","corrosão","oxidado","oxidada","oxidação"], complementares:[], dica:"Tratar a corrosão e aplicar proteção para evitar progressão." },
   { codigo:"B62", desc:"SUJEIRA OU MATERIAL ESTRANHO", palavras:["sujeira","material estranho","contaminacao","contaminado","acumulo de material","entupido","obstruido","residuo","particula","acumulo de poeira","entrada de poeira","poeira acumulada","contaminado por poeira","limalha","limalhas","limalha ferrosa","limalhas ferrosas","particulas metalicas","particula metalica","metal no oleo","ferro no oleo","particulas de ferro","amostra sos","sos","analise sos","resultado sos","amostra de oleo","analise de oleo","oleo com particulas","particulas no oleo","debris","debris metalico","debris ferroso","contaminacao metalica","material ferroso","fragmento metalico","fragmentos metalicos","cavaco","cavacos","abrasivos no oleo","particulas abrasivas"], complementares:[], dica:"Resultado de SOS com limalhas indica desgaste interno de componente. Identificar origem das particulas e inspecionar componentes do sistema hidraulico." },
@@ -289,7 +291,9 @@ var complementaresEspeciais = [
 
   { gatilho: ["abracadeira","montada"], principal:"D93", complementares:[] },
   { gatilho: ["abracadeiras","erradas"], principal:"D93", complementares:[] },
-
+{ gatilho: ["soltou"], principal:"A23", complementares:[
+  {c:"B13", d:"Desgaste por fim de vida útil"}
+] }
 ];
 
 function normalizar(txt) {
