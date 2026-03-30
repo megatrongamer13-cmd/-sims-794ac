@@ -186,7 +186,12 @@ var regras = [
   "posição incorreta",
   "posicao incorreta",
   "instalado errado",
-  "instalada errada"
+  "instalada errada","montado errado",
+"montada errada",
+"montados errados",
+"montadas erradas",
+"montagem errada",
+"instalação incorreta"
 ], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
   // NÍVEL / FLUIDO
@@ -266,6 +271,8 @@ var complementaresEspeciais = [
   { gatilho: ["lâmpada","quebrada","mal posicionado"], principal:"A10", complementares:[{c:"D93",d:"Componente do lado direito mal posicionado"}] },
   { gatilho: ["bolha","mangueira"], principal:"B90", complementares:[   {c:"A15",d:"Se houver fissura ou ruptura visível"},   {c:"C17",d:"Se houver vazamento de óleo"},   {c:"C18",d:"Se houver vazamento de fluido de arrefecimento"} ] },
   { gatilho: ["atrito","mangueira"], principal:"A26", complementares:[
+    { gatilho: ["abracadeira","montada"], principal:"D93", complementares:[] },
+{ gatilho: ["abracadeiras","erradas"], principal:"D93", complementares:[] },
   {c:"B13",d:"Desgaste causado por atrito entre componentes"},
   {c:"Y79",d:"Interferência entre componentes (roteamento incorreto)"}
 ] },
