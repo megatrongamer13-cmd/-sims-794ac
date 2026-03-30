@@ -114,7 +114,10 @@ var regras = [
   "fio danificado",
   "isolacao danificada",
   "isolamento danificado",
-  "cabo deteriorado"
+  "cabo deteriorado", "danificou",
+"danificaram",
+"dano",
+"avariou"
 ], complementares:[], dica:"Avaliar extensão do dano e necessidade de substituição." },
   { codigo:"A11", desc:"TRINCADO", palavras:["trincado","trincada","trinca","fissura","rachado","rachadura","crack"], complementares:[], dica:"Avaliar extensão da trinca antes de definir reparo ou substituição." },
   { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
@@ -306,7 +309,11 @@ function identificar() {
   var texto = document.getElementById("ia-input").value.trim();
   if (!texto) { alert("Por favor, insira a descrição da falha."); return; }
 
-  var textoNorm = normalizar(texto);
+textoNorm = textoNorm
+  .replace(/danific\w*/g, "danificado")
+  .replace(/solt\w*/g, "separado")
+  .replace(/quebr\w*/g, "quebrado")
+  .replace(/rasg\w*/g, "rasgado");
   var resultEl = document.getElementById("ia-result");
   resultEl.style.display = "block";
 
