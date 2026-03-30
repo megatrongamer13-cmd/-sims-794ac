@@ -282,12 +282,14 @@ var complementaresEspeciais = [
   { gatilho: ["fechadura","danificada"], principal:"A26", complementares:[] },
   { gatilho: ["lâmpada","quebrada","mal posicionado"], principal:"A10", complementares:[{c:"D93",d:"Componente do lado direito mal posicionado"}] },
   { gatilho: ["bolha","mangueira"], principal:"B90", complementares:[   {c:"A15",d:"Se houver fissura ou ruptura visível"},   {c:"C17",d:"Se houver vazamento de óleo"},   {c:"C18",d:"Se houver vazamento de fluido de arrefecimento"} ] },
-  { gatilho: ["atrito","mangueira"], principal:"A26", complementares:[
-    { gatilho: ["abracadeira","montada"], principal:"D93", complementares:[] },
-{ gatilho: ["abracadeiras","erradas"], principal:"D93", complementares:[] },
-  {c:"B13",d:"Desgaste causado por atrito entre componentes"},
-  {c:"Y79",d:"Interferência entre componentes (roteamento incorreto)"}
-] },
+{ gatilho: ["atrito","mangueira"], principal:"A26", complementares:[ 
+    {c:"B13",d:"Desgaste causado por atrito entre componentes"},
+    {c:"Y79",d:"Interferência entre componentes (roteamento incorreto)"}
+  ] },
+
+  { gatilho: ["abracadeira","montada"], principal:"D93", complementares:[] },
+  { gatilho: ["abracadeiras","erradas"], principal:"D93", complementares:[] },
+
 ];
 
 function normalizar(txt) {
