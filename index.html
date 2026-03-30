@@ -351,11 +351,39 @@ if (encontrados.length === 0) {
 
   // Principal = primeiro encontrado (ou o especial)
 var prioridade = [
+  // Vazamentos
   "C17","C18","C16","C19",
-  "E31","E32","E42","E66","E65","E70",
-  "A10", // 🔥 QUEBRADO primeiro
-  "A26",
-  "B13","A15"
+
+  // Elétrico
+  "E31","E32",
+
+  // Funcionamento
+  "E42","E66","E65","E70",
+
+  // 🔴 ESTRUTURAL (ORDEM DE GRAVIDADE)
+  "A10", // QUEBRADO (mais grave)
+  "A11", // TRINCADO
+  "A15", // ROMPIDO
+  "A14", // DOBRADO
+  "A21", // ROSCA
+  "A23", // SEPARADO
+  "A27", // TERMINAL
+  "A26", // MACHUCADO (menos grave)
+
+  // Desgaste
+  "B13",
+
+  // Fixação
+  "P22",
+
+  // Ajuste
+  "H91",
+
+  // Montagem
+  "D93","D95",
+
+  // Outros
+  "Y79","N8"
 ];
 var principal = encontrados[0];
 
