@@ -387,11 +387,12 @@ var prioridade = [
 ];
 var principal = encontrados[0];
 
+outer:
 for (var p = 0; p < prioridade.length; p++) {
   for (var x = 0; x < encontrados.length; x++) {
     if (encontrados[x].codigo === prioridade[p]) {
       principal = encontrados[x];
-      break;
+      break outer; // 🔥 PARA TUDO AQUI
     }
   }
 }
