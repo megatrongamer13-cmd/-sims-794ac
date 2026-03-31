@@ -413,12 +413,26 @@ var prioridade = [
 ];
 var principal = encontrados[0];
 
+// 🔥 PRIORIDADE NORMAL
 outer:
 for (var p = 0; p < prioridade.length; p++) {
   for (var x = 0; x < encontrados.length; x++) {
     if (encontrados[x].codigo === prioridade[p]) {
       principal = encontrados[x];
-      break outer; // 🔥 PARA TUDO AQUI
+      break outer;
+    }
+  }
+}
+
+// 🔥 REGRA DE NEGÓCIO (P22 só se fizer sentido)
+if (
+  (textoNorm.includes("ausente") || textoNorm.includes("faltante")) &&
+  textoNorm.includes("abracadeira")
+) {
+  for (var i = 0; i < regras.length; i++) {
+    if (regras[i].codigo === "P22") {
+      principal = regras[i];
+      break;
     }
   }
 }
