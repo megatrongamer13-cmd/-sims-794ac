@@ -316,6 +316,8 @@ function identificar() {
 
   textoNorm = textoNorm
     .replace(/ausenc\w*/g, "ausente")
+    .replace(/falt\w*/g, "faltante")
+.replace(/fixa\w*/g, "fixacao")
     .replace(/danific\w*/g, "danificado")
     .replace(/solt\w*/g, "separado")
     .replace(/quebr\w*/g, "quebrado")
