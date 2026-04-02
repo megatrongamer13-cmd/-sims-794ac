@@ -325,8 +325,6 @@ function identificar() {
 
   var resultEl = document.getElementById("ia-result");
   resultEl.style.display = "block";
-  var resultEl = document.getElementById("ia-result");
-resultEl.style.display = "block";
 
 // 🔥 ESSA PARTE TEM QUE EXISTIR
 var complementaresEncontrados = [];
@@ -421,7 +419,10 @@ for (var p = 0; p < prioridade.length; p++) {
       principal = encontrados[x];
       break outer;
     }
-    // 🔥 BLOQUEIO DE E42 QUANDO FOR DANO FÍSICO
+  }
+}
+
+// 🔥 REGRA 1: DANO FÍSICO TEM PRIORIDADE SOBRE E42
 if (textoNorm.includes("danificado")) {
   for (var i = 0; i < regras.length; i++) {
     if (regras[i].codigo === "A26") {
@@ -429,10 +430,9 @@ if (textoNorm.includes("danificado")) {
       break;
     }
   }
-  }
 }
 
-// 🔥 REGRA DE NEGÓCIO (P22 só se fizer sentido)
+// 🔥 REGRA 2: FALTA DE FIXAÇÃO
 if (
   (textoNorm.includes("ausente") || textoNorm.includes("faltante")) &&
   textoNorm.includes("abracadeira")
