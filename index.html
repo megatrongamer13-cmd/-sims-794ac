@@ -279,6 +279,20 @@ var complementaresEspeciais = [
     ]
   },
   {
+    gatilho: ["contaminacao","acima"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Elementos acima do especificado indicam desgaste interno"}
+    ]
+  },
+  {
+    gatilho: ["elementos","acima","especificado"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Contaminacao por desgaste interno de componentes"}
+    ]
+  },
+  {
     gatilho: ["sos","metal"],
     principal: "B62",
     complementares: [
@@ -748,6 +762,8 @@ function identificar() {
     "A23", // SEPARADO
     "A27", // TERMINAL
     "A26", // MACHUCADO (menos grave)
+    // Contaminação/SOS (ANTES de desgaste)
+    "B62",
     // Desgaste
     "B13",
     // Fixação
@@ -790,6 +806,20 @@ function identificar() {
   ) {
     for (var i = 0; i < regras.length; i++) {
       if (regras[i].codigo === "P22") {
+        principal = regras[i];
+        break;
+      }
+    }
+  }
+
+  // REGRA 3: CONTAMINAÇÃO/SOS TEM PRIORIDADE SOBRE DESGASTE
+  // Quando há análise de óleo com elementos acima do especificado, o código principal é B62
+  if (
+    (textoNorm.includes("contaminacao") || textoNorm.includes("sos") || textoNorm.includes("metal")) &&
+    (textoNorm.includes("acima") || textoNorm.includes("especificado") || textoNorm.includes("alta"))
+  ) {
+    for (var i = 0; i < regras.length; i++) {
+      if (regras[i].codigo === "B62") {
         principal = regras[i];
         break;
       }
