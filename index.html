@@ -229,7 +229,7 @@ var regras = [
   { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
 
   // MONTAGEM
-{ codigo:"D93", desc:"MAL POSICIONADO", palavras:[
+  { codigo:"D93", desc:"MAL POSICIONADO", palavras:[
   "mal posicionado",
   "mal posicionada",
   "mal posicionados",
@@ -247,7 +247,8 @@ var regras = [
 "montadas erradas",
 "montagem errada",
 "instalação incorreta"
-], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
+], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },
+  { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
   // NÍVEL / FLUIDO
   { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
@@ -263,112 +264,391 @@ var regras = [
   { codigo:"Y79", desc:"INTERFERÊNCIA", palavras:["interferência","atrito entre componentes","roçando","roça","contato indevido","tocando em outro componente","encostando"], complementares:[], dica:"Verificar fixação e roteamento correto de mangueiras e cabos." },
 
   // SERVIÇABILIDADE
-  { codigo:"K80", desc:"DIFÍCIL DE ACESSAR", palavras:["difícil acesso","difícil de acessar","acesso difícil","sem acesso","acesso restrito","difícil manutenção"], complementares:[], dica:"Registrar para avaliação de melhoria de serviceabilidade." },
+  { codigo:"K80", desc:"DIFÍCIL DE ACESSAR", palavras:["difícil acesso","difícil de acessar","acesso difícil","sem acesso","acesso restrito","difícil manutenção"], complementares:[], dica:"Registrar para avaliação de melhoria de serviceabilidade." }
 ];
 
-// Regras de complementares baseadas em combinações
+// ===================== REGRAS COMPLEMENTARES ESPECIAIS =====================
+// ESTRUTURA LIMPA - CADA OBJETO ABRE COM { E FECHA COM },
+// ÚLTIMO OBJETO DO ARRAY NÃO TEM VÍRGULA APÓS O }
 var complementaresEspeciais = [
   {
     gatilho: ["oleo","contaminacao"],
-    principal:"B62",
-    complementares:[
+    principal: "B62",
+    complementares: [
       {c:"B13", d:"Desgaste interno indicado por analise de oleo"}
     ]
   },
   {
+    gatilho: ["sos","metal"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Presenca de metais indica desgaste interno"}
+    ]
+  },
   {
-  gatilho: ["sos","metal"],
-  principal:"B62",
-  complementares:[
-    {c:"B13", d:"Presenca de metais indica desgaste interno"}
-  ]
-},
-{
-  gatilho: ["nivel","combustivel","sensor"],
-  principal:"L29",
-  complementares:[
-    {c:"E42",d:"Sensor de nivel com mau funcionamento"},
-    {c:"B51",d:"Sensor travado/preso fisicamente"}
-  ]
-},
-{
-  gatilho: ["nivel","combustivel","travado"],
-  principal:"L29",
-  complementares:[
-    {c:"B51",d:"Sensor travado/preso fisicamente"}
-  ]
-},
-{
-  gatilho: ["baixo nivel","combustivel"],
-  principal:"L29",
-  complementares:[
-    {c:"E42",d:"Verificar sensor de nivel"}
-  ]
-},
-  { gatilho: ["temperatura","diminuiu"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular do sistema de arrefecimento — valvula termostatica possivelmente travada aberta"}] },
-  { gatilho: ["valvula e-stat com defeito"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
-  { gatilho: ["falha na valvula e-sta"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
-  { gatilho: ["agua","combustivel"], principal:"M30", complementares:[{c:"C18",d:"Verificar origem da agua — possivel infiltracao no sistema"}] },
-  { gatilho: ["agua","oleo"], principal:"M30", complementares:[{c:"C18",d:"Verificar origem da contaminacao por agua"}] },
-  { gatilho: ["parafuso","faltante"], principal:"P22", complementares:[] },
-  { gatilho: ["parafuso","faltando"], principal:"P22", complementares:[] },
-  { gatilho: ["parafuso","ausente"], principal:"P22", complementares:[] },
-  { gatilho: ["aplicar","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["instalar","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["parafusos","faltantes"], principal:"P22", complementares:[] },
-  { gatilho: ["lataria","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["falta","abracadeira"], principal:"P22", complementares:[] },
-  { gatilho: ["falta","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["falta de abracadeira"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","falta"], principal:"P22", complementares:[] },
-  { gatilho: ["parafuso","suporte"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","suporte"], principal:"P22", complementares:[] },
-  { gatilho: ["parafuso","folgado"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","folgado"], principal:"P22", complementares:[] },
-  { gatilho: ["folga","valvula"], principal:"H91", complementares:[] },
-  { gatilho: ["folga","mancal"], principal:"H91", complementares:[] },
-  { gatilho: ["folga","componente"], principal:"H91", complementares:[] },
-  { gatilho: ["folga","incorreta"], principal:"H91", complementares:[] },
-  { gatilho: ["folga","fora"], principal:"H91", complementares:[] },
-  { gatilho: ["jogo","fora"], principal:"H91", complementares:[] },
-  { gatilho: ["jogo","excessivo"], principal:"H91", complementares:[] },
-  { gatilho: ["parafuso","frouxo"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","folgada"], principal:"P22", complementares:[] },
-  { gatilho: ["abracadeira","frouxa"], principal:"P22", complementares:[] },
-  { gatilho: ["porca","folgada"], principal:"P22", complementares:[] },
-  { gatilho: ["porca","frouxa"], principal:"P22", complementares:[] },
-  { gatilho: ["cabine","parafuso"], principal:"P22", complementares:[] },
-  { gatilho: ["limalha"], principal:"B62", complementares:[{c:"B13",d:"Limalhas indicam desgaste interno de componente — identificar origem"}] },
-  { gatilho: ["sos","limalha"], principal:"B62", complementares:[{c:"B13",d:"Desgaste interno detectado via SOS — inspecionar componentes do sistema"}] },
-  { gatilho: ["sos","particula"], principal:"B62", complementares:[{c:"B13",d:"Particulas no oleo indicam desgaste — verificar filtros e componentes"}] },
-  { gatilho: ["glicol"], principal:"M30", complementares:[] },
-  { gatilho: ["concentracao","arrefecedor"], principal:"M30", complementares:[] },
-  { gatilho: ["substituir","liquido","arrefecedor"], principal:"M30", complementares:[] },
-  { gatilho: ["rotacao","ventilador"], principal:"E77", complementares:[{c:"E53",d:"Alta rotacao do ventilador pode indicar superaquecimento"}] },
-  { gatilho: ["alta rotacao","ventilador"], principal:"E77", complementares:[{c:"E53",d:"Verificar temperatura do motor — ventilador em alta rotacao pode ser sintoma de superaquecimento"}] },
-  { gatilho: ["temperatura","motor","diminuiu"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular do sistema — verificar valvula termostatica travada aberta"},{c:"E53",d:"Monitorar para verificar se ha tambem superaquecimento"}] },
-  { gatilho: ["atrito","abraçadeira","mangote","mangueira"], principal:"B13", complementares:[{c:"P22",d:"Abraçadeira mal posicionada ou faltante foi a causa raiz do atrito"}] },
-  { gatilho: ["atrito","abraçadeira"], principal:"B13", complementares:[{c:"P22",d:"Ausência ou mau posicionamento de abraçadeira causou o atrito"}] },
-  { gatilho: ["desalinhado","porta","barulho"], principal:"H91", complementares:[{c:"E52",d:"Barulho resultante do desalinhamento"},{c:"B62",d:"Entrada de poeira/material estranho pela folga"}] },
-  { gatilho: ["desalinhado","barulho","poeira"], principal:"H91", complementares:[{c:"E52",d:"Barulho anormal pelo desalinhamento"},{c:"B62",d:"Entrada de sujeira/poeira"}] },
-  { gatilho: ["mangueira","ressecada"], principal:"B13", complementares:[{c:"C17",d:"Risco de vazamento futuro pelo ressecamento"},{c:"A15",d:"Se já houver fissura ou rasgo visível"}] },
-  { gatilho: ["mangueira","ressecada","água"], principal:"B13", complementares:[{c:"C18",d:"Risco de vazamento de água pelo ressecamento"}] },
-  { gatilho: ["parafuso","faltando","lataria"], principal:"P22", complementares:[] },
-  { gatilho: ["suporte","faltando","mangueira"], principal:"P22", complementares:[{c:"B13",d:"Dano nas mangueiras causado pela falta de fixação"}] },
-  { gatilho: ["fechadura","danificada"], principal:"A26", complementares:[] },
-  { gatilho: ["lâmpada","quebrada","mal posicionado"], principal:"A10", complementares:[{c:"D93",d:"Componente do lado direito mal posicionado"}] },
-  { gatilho: ["bolha","mangueira"], principal:"B90", complementares:[   {c:"A15",d:"Se houver fissura ou ruptura visível"},   {c:"C17",d:"Se houver vazamento de óleo"},   {c:"C18",d:"Se houver vazamento de fluido de arrefecimento"} ] },
-{ gatilho: ["atrito","mangueira"], principal:"A26", complementares:[ 
-    {c:"B13",d:"Desgaste causado por atrito entre componentes"},
-    {c:"Y79",d:"Interferência entre componentes (roteamento incorreto)"}
-  ] },
-
-  { gatilho: ["abracadeira","montada"], principal:"D93", complementares:[] },
-  { gatilho: ["abracadeiras","erradas"], principal:"D93", complementares:[] },
-{ gatilho: ["soltou"], principal:"A23", complementares:[
-  {c:"B13", d:"Desgaste por fim de vida útil"}
-] }
+    gatilho: ["nivel","combustivel","sensor"],
+    principal: "L29",
+    complementares: [
+      {c:"E42", d:"Sensor de nivel com mau funcionamento"},
+      {c:"B51", d:"Sensor travado/preso fisicamente"}
+    ]
+  },
+  {
+    gatilho: ["nivel","combustivel","travado"],
+    principal: "L29",
+    complementares: [
+      {c:"B51", d:"Sensor travado causando leitura incorreta de nivel"},
+      {c:"E42", d:"Mau funcionamento do sistema de nivel"}
+    ]
+  },
+  {
+    gatilho: ["baixo nivel","combustivel"],
+    principal: "L29",
+    complementares: [
+      {c:"E42", d:"Verificar sensor de nivel se eventos ocorrem em periodo curto"}
+    ]
+  },
+  {
+    gatilho: ["temperatura","diminuiu"],
+    principal: "E42",
+    complementares: [
+      {c:"E73", d:"Operacao irregular do sistema de arrefecimento — valvula termostatica possivelmente travada aberta"}
+    ]
+  },
+  {
+    gatilho: ["valvula e-stat com defeito"],
+    principal: "E42",
+    complementares: [
+      {c:"E73", d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}
+    ]
+  },
+  {
+    gatilho: ["falha na valvula e-sta"],
+    principal: "E42",
+    complementares: [
+      {c:"E73", d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}
+    ]
+  },
+  {
+    gatilho: ["agua","combustivel"],
+    principal: "M30",
+    complementares: [
+      {c:"C18", d:"Verificar origem da agua — possivel infiltracao no sistema"}
+    ]
+  },
+  {
+    gatilho: ["agua","oleo"],
+    principal: "M30",
+    complementares: [
+      {c:"C18", d:"Verificar origem da contaminacao por agua"}
+    ]
+  },
+  {
+    gatilho: ["parafuso","faltante"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["parafuso","faltando"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["parafuso","ausente"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["aplicar","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["instalar","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["parafusos","faltantes"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["lataria","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["falta","abracadeira"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["falta","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["falta de abracadeira"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","falta"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["parafuso","suporte"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","suporte"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["parafuso","folgado"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","folgado"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["folga","valvula"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["folga","mancal"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["folga","componente"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["folga","incorreta"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["folga","fora"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["jogo","fora"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["jogo","excessivo"],
+    principal: "H91",
+    complementares: []
+  },
+  {
+    gatilho: ["parafuso","frouxo"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","folgada"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeira","frouxa"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["porca","folgada"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["porca","frouxa"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["cabine","parafuso"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["limalha"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Limalhas indicam desgaste interno de componente — identificar origem"}
+    ]
+  },
+  {
+    gatilho: ["sos","limalha"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Desgaste interno detectado via SOS — inspecionar componentes do sistema"}
+    ]
+  },
+  {
+    gatilho: ["sos","particula"],
+    principal: "B62",
+    complementares: [
+      {c:"B13", d:"Particulas no oleo indicam desgaste — verificar filtros e componentes"}
+    ]
+  },
+  {
+    gatilho: ["glicol"],
+    principal: "M30",
+    complementares: []
+  },
+  {
+    gatilho: ["concentracao","arrefecedor"],
+    principal: "M30",
+    complementares: []
+  },
+  {
+    gatilho: ["substituir","liquido","arrefecedor"],
+    principal: "M30",
+    complementares: []
+  },
+  {
+    gatilho: ["rotacao","ventilador"],
+    principal: "E77",
+    complementares: [
+      {c:"E53", d:"Alta rotacao do ventilador pode indicar superaquecimento"}
+    ]
+  },
+  {
+    gatilho: ["alta rotacao","ventilador"],
+    principal: "E77",
+    complementares: [
+      {c:"E53", d:"Verificar temperatura do motor — ventilador em alta rotacao pode ser sintoma de superaquecimento"}
+    ]
+  },
+  {
+    gatilho: ["temperatura","motor","diminuiu"],
+    principal: "E42",
+    complementares: [
+      {c:"E73", d:"Operacao irregular do sistema — verificar valvula termostatica travada aberta"},
+      {c:"E53", d:"Monitorar para verificar se ha tambem superaquecimento"}
+    ]
+  },
+  {
+    gatilho: ["atrito","abraçadeira","mangote","mangueira"],
+    principal: "B13",
+    complementares: [
+      {c:"P22", d:"Abraçadeira mal posicionada ou faltante foi a causa raiz do atrito"}
+    ]
+  },
+  {
+    gatilho: ["atrito","abraçadeira"],
+    principal: "B13",
+    complementares: [
+      {c:"P22", d:"Ausência ou mau posicionamento de abraçadeira causou o atrito"}
+    ]
+  },
+  {
+    gatilho: ["desalinhado","porta","barulho"],
+    principal: "H91",
+    complementares: [
+      {c:"E52", d:"Barulho resultante do desalinhamento"},
+      {c:"B62", d:"Entrada de poeira/material estranho pela folga"}
+    ]
+  },
+  {
+    gatilho: ["desalinhado","barulho","poeira"],
+    principal: "H91",
+    complementares: [
+      {c:"E52", d:"Barulho anormal pelo desalinhamento"},
+      {c:"B62", d:"Entrada de sujeira/poeira"}
+    ]
+  },
+  {
+    gatilho: ["mangueira","ressecada"],
+    principal: "B13",
+    complementares: [
+      {c:"C17", d:"Risco de vazamento futuro pelo ressecamento"},
+      {c:"A15", d:"Se já houver fissura ou rasgo visível"}
+    ]
+  },
+  {
+    gatilho: ["mangueira","ressecada","água"],
+    principal: "B13",
+    complementares: [
+      {c:"C18", d:"Risco de vazamento de água pelo ressecamento"}
+    ]
+  },
+  {
+    gatilho: ["parafuso","faltando","lataria"],
+    principal: "P22",
+    complementares: []
+  },
+  {
+    gatilho: ["suporte","faltando","mangueira"],
+    principal: "P22",
+    complementares: [
+      {c:"B13", d:"Dano nas mangueiras causado pela falta de fixação"}
+    ]
+  },
+  {
+    gatilho: ["fechadura","danificada"],
+    principal: "A26",
+    complementares: []
+  },
+  {
+    gatilho: ["lâmpada","quebrada","mal posicionado"],
+    principal: "A10",
+    complementares: [
+      {c:"D93", d:"Componente do lado direito mal posicionado"}
+    ]
+  },
+  {
+    gatilho: ["bolha","mangueira"],
+    principal: "B90",
+    complementares: [
+      {c:"A15", d:"Se houver fissura ou ruptura visível"},
+      {c:"C17", d:"Se houver vazamento de óleo"},
+      {c:"C18", d:"Se houver vazamento de fluido de arrefecimento"}
+    ]
+  },
+  {
+    gatilho: ["atrito","mangueira"],
+    principal: "A26",
+    complementares: [
+      {c:"B13", d:"Desgaste causado por atrito entre componentes"},
+      {c:"Y79", d:"Interferência entre componentes (roteamento incorreto)"}
+    ]
+  },
+  {
+    gatilho: ["abracadeira","montada"],
+    principal: "D93",
+    complementares: []
+  },
+  {
+    gatilho: ["abracadeiras","erradas"],
+    principal: "D93",
+    complementares: []
+  },
+  {
+    gatilho: ["soltou"],
+    principal: "A23",
+    complementares: [
+      {c:"B13", d:"Desgaste por fim de vida útil"}
+    ]
+  }
 ];
 
 function normalizar(txt) {
@@ -385,16 +665,16 @@ function identificar() {
 
   textoNorm = textoNorm
     .replace(/acima do especificado/g, "contaminacao")
-.replace(/ferro/g, "metal")
-.replace(/cobre/g, "metal")
-.replace(/sodio/g, "contaminacao")
-.replace(/analise/g, "sos")
-.replace(/valores/g, "sos")
+    .replace(/ferro/g, "metal")
+    .replace(/cobre/g, "metal")
+    .replace(/sodio/g, "contaminacao")
+    .replace(/analise/g, "sos")
+    .replace(/valores/g, "sos")
     .replace(/acima da media/g, "alta")
-.replace(/rail/g, "combustivel")
+    .replace(/rail/g, "combustivel")
     .replace(/ausenc\w*/g, "ausente")
     .replace(/falt\w*/g, "faltante")
-.replace(/fixa\w*/g, "fixacao")
+    .replace(/fixa\w*/g, "fixacao")
     .replace(/danific\w*/g, "danificado")
     .replace(/solt\w*/g, "separado")
     .replace(/quebr\w*/g, "quebrado")
@@ -403,124 +683,119 @@ function identificar() {
   var resultEl = document.getElementById("ia-result");
   resultEl.style.display = "block";
 
-// 🔥 ESSA PARTE TEM QUE EXISTIR
-var complementaresEncontrados = [];
-var principalEspecial = null;
+  // Buscar regras especiais de complementares
+  var complementaresEncontrados = [];
+  var principalEspecial = null;
 
-for (var i = 0; i < complementaresEspeciais.length; i++) {
-  var ce = complementaresEspeciais[i];
-  var todosPresentes = true;
-  for (var g = 0; g < ce.gatilho.length; g++) {
-    if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) {
-      todosPresentes = false;
+  for (var i = 0; i < complementaresEspeciais.length; i++) {
+    var ce = complementaresEspeciais[i];
+    var todosPresentes = true;
+    for (var g = 0; g < ce.gatilho.length; g++) {
+      if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) {
+        todosPresentes = false;
+        break;
+      }
+    }
+    if (todosPresentes) {
+      principalEspecial = ce.principal;
+      complementaresEncontrados = ce.complementares;
       break;
     }
   }
-  if (todosPresentes) {
-    principalEspecial = ce.principal;
-    complementaresEncontrados = ce.complementares;
-    break;
-  }
-}
 
   // Encontrar todos os códigos que batem
   var encontrados = [];
   for (var j = 0; j < regras.length; j++) {
     var r = regras[j];
     for (var k = 0; k < r.palavras.length; k++) {
-if ((" " + textoNorm + " ").includes(" " + normalizar(r.palavras[k]) + " ")) {        encontrados.push(r);
+      if ((" " + textoNorm + " ").includes(" " + normalizar(r.palavras[k]) + " ")) {
+        encontrados.push(r);
         break;
       }
     }
   }
 
- // 🔥 SE NÃO ACHOU NAS REGRAS, MAS ACHOU REGRA ESPECIAL
-if (encontrados.length === 0 && principalEspecial) {
+  // SE NÃO ACHOU NAS REGRAS, MAS ACHOU REGRA ESPECIAL
+  if (encontrados.length === 0 && principalEspecial) {
     for (var m = 0; m < regras.length; m++) {
-        if (regras[m].codigo === principalEspecial) {
-            encontrados.push(regras[m]);
-            break;
-        }
+      if (regras[m].codigo === principalEspecial) {
+        encontrados.push(regras[m]);
+        break;
+      }
     }
-}
+  }
 
-// SE NÃO ACHOU NADA MESMO
-if (encontrados.length === 0) {
+  // SE NÃO ACHOU NADA MESMO
+  if (encontrados.length === 0) {
     resultEl.innerHTML = "<div class='nenhum'>⚠️ Nenhum código identificado automaticamente. Tente descrever a falha com mais detalhes ou consulte a tabela abaixo manualmente.</div>";
     return;
-}
+  }
 
   // Principal = primeiro encontrado (ou o especial)
-var prioridade = [
-  // Vazamentos
-  "C17","C18","C16","C19",
+  var prioridade = [
+    // Vazamentos
+    "C17","C18","C16","C19",
+    // Elétrico
+    "E31","E32",
+    // Funcionamento
+    "E42","E66","E65","E70",
+    // ESTRUTURAL (ORDEM DE GRAVIDADE)
+    "A10", // QUEBRADO (mais grave)
+    "A11", // TRINCADO
+    "A15", // ROMPIDO
+    "A14", // DOBRADO
+    "A21", // ROSCA
+    "A23", // SEPARADO
+    "A27", // TERMINAL
+    "A26", // MACHUCADO (menos grave)
+    // Desgaste
+    "B13",
+    // Fixação
+    "P22",
+    // Ajuste
+    "H91",
+    // Montagem
+    "D93","D95",
+    // Outros
+    "Y79","N8"
+  ];
 
-  // Elétrico
-  "E31","E32",
+  var principal = encontrados[0];
 
-  // Funcionamento
-  "E42","E66","E65","E70",
-
-  // 🔴 ESTRUTURAL (ORDEM DE GRAVIDADE)
-  "A10", // QUEBRADO (mais grave)
-  "A11", // TRINCADO
-  "A15", // ROMPIDO
-  "A14", // DOBRADO
-  "A21", // ROSCA
-  "A23", // SEPARADO
-  "A27", // TERMINAL
-  "A26", // MACHUCADO (menos grave)
-
-  // Desgaste
-  "B13",
-
-  // Fixação
-  "P22",
-
-  // Ajuste
-  "H91",
-
-  // Montagem
-  "D93","D95",
-
-  // Outros
-  "Y79","N8"
-];
-var principal = encontrados[0];
-
-// 🔥 PRIORIDADE NORMAL
-outer:
-for (var p = 0; p < prioridade.length; p++) {
-  for (var x = 0; x < encontrados.length; x++) {
-    if (encontrados[x].codigo === prioridade[p]) {
-      principal = encontrados[x];
-      break outer;
+  // PRIORIDADE NORMAL
+  outer:
+  for (var p = 0; p < prioridade.length; p++) {
+    for (var x = 0; x < encontrados.length; x++) {
+      if (encontrados[x].codigo === prioridade[p]) {
+        principal = encontrados[x];
+        break outer;
+      }
     }
   }
-}
 
-// 🔥 REGRA 1: DANO FÍSICO TEM PRIORIDADE SOBRE E42
-if (textoNorm.includes("danificado")) {
-  for (var i = 0; i < regras.length; i++) {
-    if (regras[i].codigo === "A26") {
-      principal = regras[i];
-      break;
+  // REGRA 1: DANO FÍSICO TEM PRIORIDADE SOBRE E42
+  if (textoNorm.includes("danificado")) {
+    for (var i = 0; i < regras.length; i++) {
+      if (regras[i].codigo === "A26") {
+        principal = regras[i];
+        break;
+      }
     }
   }
-}
 
-// 🔥 REGRA 2: FALTA DE FIXAÇÃO
-if (
-  (textoNorm.includes("ausente") || textoNorm.includes("faltante")) &&
-  textoNorm.includes("abracadeira")
-) {
-  for (var i = 0; i < regras.length; i++) {
-    if (regras[i].codigo === "P22") {
-      principal = regras[i];
-      break;
+  // REGRA 2: FALTA DE FIXAÇÃO
+  if (
+    (textoNorm.includes("ausente") || textoNorm.includes("faltante")) &&
+    textoNorm.includes("abracadeira")
+  ) {
+    for (var i = 0; i < regras.length; i++) {
+      if (regras[i].codigo === "P22") {
+        principal = regras[i];
+        break;
+      }
     }
   }
-}
+
   // Montar HTML
   var html = "";
   html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</div>";
