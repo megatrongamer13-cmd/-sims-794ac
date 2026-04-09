@@ -276,15 +276,35 @@ var complementaresEspeciais = [
     ]
   },
   {
-    gatilho: ["sos","metal"],
-    principal:"B62",
-    complementares:[
-      {c:"B13", d:"Presenca de metais indica desgaste interno"}
-    ]
-  },
-  gatilho: ["nivel","combustivel","sensor"], principal:"L29", complementares:[{c:"E42",d:"Sensor de nivel com mau funcionamento"},{c:"B51",d:"Sensor travado/preso fisicamente"}] },
-  { gatilho: ["nivel","combustivel","travado"], principal:"L29", complementares:[{c:"B51",d:"Sensor travado causando leitura incorreta de nivel"},{c:"E42",d:"Mau funcionamento do sistema de nivel"}] },
-  { gatilho: ["baixo nivel","combustivel"], principal:"L29", complementares:[{c:"E42",d:"Verificar sensor de nivel se eventos ocorrem em periodo curto"}] },
+  {
+  gatilho: ["sos","metal"],
+  principal:"B62",
+  complementares:[
+    {c:"B13", d:"Presenca de metais indica desgaste interno"}
+  ]
+},
+{
+  gatilho: ["nivel","combustivel","sensor"],
+  principal:"L29",
+  complementares:[
+    {c:"E42",d:"Sensor de nivel com mau funcionamento"},
+    {c:"B51",d:"Sensor travado/preso fisicamente"}
+  ]
+},
+{
+  gatilho: ["nivel","combustivel","travado"],
+  principal:"L29",
+  complementares:[
+    {c:"B51",d:"Sensor travado/preso fisicamente"}
+  ]
+},
+{
+  gatilho: ["baixo nivel","combustivel"],
+  principal:"L29",
+  complementares:[
+    {c:"E42",d:"Verificar sensor de nivel"}
+  ]
+},
   { gatilho: ["temperatura","diminuiu"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular do sistema de arrefecimento — valvula termostatica possivelmente travada aberta"}] },
   { gatilho: ["valvula e-stat com defeito"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
   { gatilho: ["falha na valvula e-sta"], principal:"E42", complementares:[{c:"E73",d:"Operacao irregular — inspecionar valvula e-stat (termostatica)"}] },
