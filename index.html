@@ -269,19 +269,19 @@ var regras = [
 // Regras de complementares baseadas em combinações
 var complementaresEspeciais = [
   {
-  gatilho: ["oleo","contaminacao"],
-  principal:"B62",
-  complementares:[
-    {c:"B13", d:"Desgaste interno indicado por analise de oleo"}
-  ]
-},
-{
-  gatilho: ["sos","metal"],
-  principal:"B62",
-  complementares:[
-    {c:"B13", d:"Presenca de metais indica desgaste interno"}
-},
-{
+    gatilho: ["oleo","contaminacao"],
+    principal:"B62",
+    complementares:[
+      {c:"B13", d:"Desgaste interno indicado por analise de oleo"}
+    ]
+  },
+  {
+    gatilho: ["sos","metal"],
+    principal:"B62",
+    complementares:[
+      {c:"B13", d:"Presenca de metais indica desgaste interno"}
+    ]
+  },
   gatilho: ["nivel","combustivel","sensor"], principal:"L29", complementares:[{c:"E42",d:"Sensor de nivel com mau funcionamento"},{c:"B51",d:"Sensor travado/preso fisicamente"}] },
   { gatilho: ["nivel","combustivel","travado"], principal:"L29", complementares:[{c:"B51",d:"Sensor travado causando leitura incorreta de nivel"},{c:"E42",d:"Mau funcionamento do sistema de nivel"}] },
   { gatilho: ["baixo nivel","combustivel"], principal:"L29", complementares:[{c:"E42",d:"Verificar sensor de nivel se eventos ocorrem em periodo curto"}] },
