@@ -666,25 +666,22 @@ function normalizar(txt) {
     .replace(/[^a-z0-9\s]/g," ");
 }
 
-function identificar() {
+function identificar() {function identificar() {
   var texto = document.getElementById("ia-input").value.trim();
-  if (!texto) { alert("Por favor, insira a descrição da falha."); return; }
+  if (!texto) {
+    alert("Por favor, insira a descrição da falha.");
+    return;
+  }
 
   var textoNorm = normalizar(texto);
 
+  // NORMALIZAÇÃO CONTROLADA (menos agressiva)
   textoNorm = textoNorm
     .replace(/acima do especificado/g, "contaminacao")
-    .replace(/\bferro\b/g, "metal")
-    .replace(/\bcobre\b/g, "metal")
-    .replace(/sodio/g, "contaminacao")
-    .replace(/analise de oleo/g, "sos")
-    .replace(/analise sos/g, "sos")
-    .replace(/acima da media/g, "alta")
-    .replace(/rail/g, "combustivel")
+    .replace(/\bferro\b|\bcobre\b/g, "metal")
+    .replace(/analise de oleo|analise sos/g, "sos")
     .replace(/ausenc\w*/g, "ausente")
     .replace(/falt\w*/g, "faltante")
-    .replace(/fixa\w*/g, "fixacao")
-    .replace(/danific\w*/g, "danificado")
     .replace(/solt(ou|aram|ando)/g, "separado")
     .replace(/quebr\w*/g, "quebrado")
     .replace(/rasg\w*/g, "rasgado");
@@ -692,185 +689,123 @@ function identificar() {
   var resultEl = document.getElementById("ia-result");
   resultEl.style.display = "block";
 
-  // Buscar regras especiais de complementares
-  var complementaresEncontrados = [];
-  var principalEspecial = null;
-
-  for (var i = 0; i < complementaresEspeciais.length; i++) {
-    var ce = complementaresEspeciais[i];
-    var todosPresentes = true;
-    for (var g = 0; g < ce.gatilho.length; g++) {
-      if (textoNorm.indexOf(normalizar(ce.gatilho[g])) === -1) {
-        todosPresentes = false;
-        break;
-      }
-    }
-    if (todosPresentes) {
-      principalEspecial = ce.principal;
-      complementaresEncontrados = ce.complementares;
-      break;
-    }
-  }
-
-  // Encontrar todos os códigos que batem
   var encontrados = [];
+
+  // ================================
+  // 1. MATCH NORMAL
+  // ================================
   for (var j = 0; j < regras.length; j++) {
     var r = regras[j];
     for (var k = 0; k < r.palavras.length; k++) {
-      if ((" " + textoNorm + " ").includes(" " + normalizar(r.palavras[k]) + " ")) {
+      if (textoNorm.includes(normalizar(r.palavras[k]))) {
         encontrados.push(r);
         break;
       }
     }
   }
 
-  // SE NÃO ACHOU NAS REGRAS, MAS ACHOU REGRA ESPECIAL
-  if (encontrados.length === 0 && principalEspecial) {
-    for (var m = 0; m < regras.length; m++) {
-      if (regras[m].codigo === principalEspecial) {
-        encontrados.push(regras[m]);
+  // ================================
+  // 2. REGRA CRÍTICA (CORREÇÃO DO BUG)
+  // AUSÊNCIA SEMPRE VENCE
+  // ================================
+  var temAusencia =
+    textoNorm.includes("ausente") ||
+    textoNorm.includes("faltante") ||
+    textoNorm.includes("sem ");
+
+  var principal = null;
+
+  if (temAusencia) {
+    principal = regras.find(r => r.codigo === "P22");
+  }
+
+  // ================================
+  // 3. REGRA SOS / CONTAMINAÇÃO (CONTROLADA)
+  // ================================
+  if (
+    !principal &&
+    (textoNorm.includes("limalha") ||
+     textoNorm.includes("sos") ||
+     textoNorm.includes("metal")) &&
+    (textoNorm.includes("contaminacao") ||
+     textoNorm.includes("particula"))
+  ) {
+    principal = regras.find(r => r.codigo === "B62");
+  }
+
+  // ================================
+  // 4. FALLBACK COM PRIORIDADE
+  // ================================
+  if (!principal && encontrados.length > 0) {
+
+    var prioridade = [
+      "P22", // 🔴 AGORA PRIMEIRO
+      "C17","C18","C16","C19","C67",
+      "E31","E32",
+      "E42","E66","E65","E70",
+      "E77","E53","E55","E63","E72",
+      "E73","E52","E54","E58",
+      "A10","A11","A15","A14","A12","A21","A23","A27","A26",
+      "B62","B13","B51","B90","B2","B3",
+      "H91","D93","D95",
+      "L29","M30","R82",
+      "Y79","N8","K80"
+    ];
+
+    for (var p = 0; p < prioridade.length; p++) {
+      var found = encontrados.find(e => e.codigo === prioridade[p]);
+      if (found) {
+        principal = found;
         break;
       }
     }
   }
 
-  // SE NÃO ACHOU NADA MESMO
-  if (encontrados.length === 0) {
-    resultEl.innerHTML = "<div class='nenhum'>⚠️ Nenhum código identificado automaticamente. Tente descrever a falha com mais detalhes ou consulte a tabela abaixo manualmente.</div>";
+  // ================================
+  // 5. SE NÃO ACHOU NADA
+  // ================================
+  if (!principal) {
+    resultEl.innerHTML =
+      "<div class='nenhum'>⚠️ Nenhum código identificado automaticamente.</div>";
     return;
   }
 
-  // Principal = primeiro encontrado (ou o especial)
-  var prioridade = [
-    // Vazamentos
-    "C17","C18","C16","C19","C67",
-    // Elétrico
-    "E31","E32",
-    // Mau funcionamento crítico
-    "E42","E66","E65","E70",
-    // Mau funcionamento grave
-    "E77","E53","E55","E63","E72",
-    // Mau funcionamento moderado
-    "E73","E52","E54","E58",
-    // ESTRUTURAL (ORDEM DE GRAVIDADE)
-    "A10", // QUEBRADO (mais grave)
-    "A11", // TRINCADO
-    "A15", // ROMPIDO
-    "A14", // DOBRADO
-    "A12", // EMPENADO
-    "A21", // ROSCA
-    "A23", // SEPARADO
-    "A27", // TERMINAL
-    "A26", // MACHUCADO (menos grave)
-    // Contaminação/SOS (ANTES de desgaste)
-    "B62",
-    // Desgaste e defeitos superficiais
-    "B13","B51","B90","B2","B3",
-    // Fixação
-    "P22",
-    // Ajuste
-    "H91",
-    // Montagem
-    "D93","D95",
-    // Nível/fluido/peça
-    "L29","M30","R82",
-    // Interferência / acidente
-    "Y79","N8",
-    // Serviçabilidade
-    "K80"
-  ];
+  // ================================
+  // 6. COMPLEMENTARES
+  // ================================
+  var comps = [];
 
-  var principal = encontrados[0];
-
-  // SE REGRA ESPECIAL FOI ATIVADA, ELA DEFINE O CÓDIGO PRINCIPAL
-  if (principalEspecial) {
-    for (var m = 0; m < regras.length; m++) {
-      if (regras[m].codigo === principalEspecial) {
-        principal = regras[m];
-        var jaNaLista = false;
-        for (var x = 0; x < encontrados.length; x++) {
-          if (encontrados[x].codigo === principalEspecial) { jaNaLista = true; break; }
-        }
-        if (!jaNaLista) encontrados.push(regras[m]);
-        break;
-      }
-    }
-  } else {
-    // PRIORIDADE NORMAL (apenas quando não há regra especial)
-    outer:
-    for (var p = 0; p < prioridade.length; p++) {
-      for (var x = 0; x < encontrados.length; x++) {
-        if (encontrados[x].codigo === prioridade[p]) {
-          principal = encontrados[x];
-          break outer;
-        }
+  for (var i = 0; i < encontrados.length; i++) {
+    if (encontrados[i].codigo !== principal.codigo) {
+      if (!comps.find(c => c.c === encontrados[i].codigo)) {
+        comps.push({
+          c: encontrados[i].codigo,
+          d: encontrados[i].desc
+        });
       }
     }
   }
 
-  // REGRA 1: DANO FÍSICO TEM PRIORIDADE SOBRE E42
-  if (textoNorm.includes("danificado")) {
-    for (var i = 0; i < regras.length; i++) {
-      if (regras[i].codigo === "A26") {
-        principal = regras[i];
-        break;
-      }
-    }
-  }
-
-  // REGRA 2: FALTA DE FIXAÇÃO
-  if (
-    (textoNorm.includes("ausente") || textoNorm.includes("faltante")) &&
-    textoNorm.includes("abracadeira")
-  ) {
-    for (var i = 0; i < regras.length; i++) {
-      if (regras[i].codigo === "P22") {
-        principal = regras[i];
-        break;
-      }
-    }
-  }
-
-  // REGRA 3: CONTAMINAÇÃO/SOS TEM PRIORIDADE SOBRE DESGASTE
-  // Quando há análise de óleo com elementos acima do especificado, o código principal é B62
-  if (
-    (textoNorm.includes("contaminacao") || textoNorm.includes("sos") || textoNorm.includes("metal")) &&
-    (textoNorm.includes("acima") || textoNorm.includes("especificado") || textoNorm.includes("alta"))
-  ) {
-    for (var i = 0; i < regras.length; i++) {
-      if (regras[i].codigo === "B62") {
-        principal = regras[i];
-        break;
-      }
-    }
-  }
-
-  // Montar HTML
+  // ================================
+  // 7. RENDER
+  // ================================
   var html = "";
-  html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</div>";
-
-  // Complementares
-  var comps = complementaresEncontrados.length > 0 ? complementaresEncontrados : [];
-  // Adicionar outros encontrados como complementares
-  for (var n = 0; n < encontrados.length; n++) {
-    if (encontrados[n].codigo !== principal.codigo) {
-      var jaExiste = false;
-      for (var x = 0; x < comps.length; x++) { if(comps[x].c === encontrados[n].codigo) { jaExiste=true; break; } }
-      if (!jaExiste) comps.push({c: encontrados[n].codigo, d: encontrados[n].desc});
-    }
-  }
+  html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: "
+        + principal.codigo + " — " + principal.desc + "</div>";
 
   if (comps.length > 0) {
-    var compHtml = "<div class='codigo-complementar'><strong>🟡 COMPLEMENTAR(ES):</strong><br>";
-    for (var p = 0; p < comps.length; p++) {
-      compHtml += "• <strong>" + comps[p].c + "</strong> — " + comps[p].d + "<br>";
-    }
-    compHtml += "</div>";
-    html += compHtml;
+    html += "<div class='codigo-complementar'><strong>🟡 COMPLEMENTAR(ES):</strong><br>";
+    comps.forEach(c => {
+      html += "• <strong>" + c.c + "</strong> — " + c.d + "<br>";
+    });
+    html += "</div>";
   }
 
-  html += "<div class='dica'>💡 <strong>Dica:</strong> " + principal.dica + "</div>";
+  html += "<div class='dica'>💡 <strong>Dica:</strong> "
+        + principal.dica + "</div>";
+
   resultEl.innerHTML = html;
+}
 }
 
 // ===================== TABELA =====================
