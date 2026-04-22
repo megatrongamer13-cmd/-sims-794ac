@@ -674,18 +674,18 @@ function identificar() {
 
   textoNorm = textoNorm
     .replace(/acima do especificado/g, "contaminacao")
-    .replace(/ferro/g, "metal")
-    .replace(/cobre/g, "metal")
+    .replace(/\bferro\b/g, "metal")
+    .replace(/\bcobre\b/g, "metal")
     .replace(/sodio/g, "contaminacao")
-    .replace(/analise/g, "sos")
-    .replace(/valores/g, "sos")
+    .replace(/analise de oleo/g, "sos")
+    .replace(/analise sos/g, "sos")
     .replace(/acima da media/g, "alta")
     .replace(/rail/g, "combustivel")
     .replace(/ausenc\w*/g, "ausente")
     .replace(/falt\w*/g, "faltante")
     .replace(/fixa\w*/g, "fixacao")
     .replace(/danific\w*/g, "danificado")
-    .replace(/solt\w*/g, "separado")
+    .replace(/solt(ou|aram|ando)/g, "separado")
     .replace(/quebr\w*/g, "quebrado")
     .replace(/rasg\w*/g, "rasgado");
 
@@ -743,32 +743,41 @@ function identificar() {
   // Principal = primeiro encontrado (ou o especial)
   var prioridade = [
     // Vazamentos
-    "C17","C18","C16","C19",
+    "C17","C18","C16","C19","C67",
     // Elétrico
     "E31","E32",
-    // Funcionamento
+    // Mau funcionamento crítico
     "E42","E66","E65","E70",
+    // Mau funcionamento grave
+    "E77","E53","E55","E63","E72",
+    // Mau funcionamento moderado
+    "E73","E52","E54","E58",
     // ESTRUTURAL (ORDEM DE GRAVIDADE)
     "A10", // QUEBRADO (mais grave)
     "A11", // TRINCADO
     "A15", // ROMPIDO
     "A14", // DOBRADO
+    "A12", // EMPENADO
     "A21", // ROSCA
     "A23", // SEPARADO
     "A27", // TERMINAL
     "A26", // MACHUCADO (menos grave)
     // Contaminação/SOS (ANTES de desgaste)
     "B62",
-    // Desgaste
-    "B13",
+    // Desgaste e defeitos superficiais
+    "B13","B51","B90","B2","B3",
     // Fixação
     "P22",
     // Ajuste
     "H91",
     // Montagem
     "D93","D95",
-    // Outros
-    "Y79","N8"
+    // Nível/fluido/peça
+    "L29","M30","R82",
+    // Interferência / acidente
+    "Y79","N8",
+    // Serviçabilidade
+    "K80"
   ];
 
   var principal = encontrados[0];
