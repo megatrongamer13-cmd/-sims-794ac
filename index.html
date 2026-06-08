@@ -96,28 +96,28 @@ var regras = [
   { codigo:"A26", desc:"MACHUCADO", palavras:["danificado","danificada","danificados","danificadas","dano físico","avariado","avariada","machucado","machucada","com dano","com avaria","danos físicos","fisicamente danificado","cabo danificado","chicote danificado","fio danificado","isolacao danificada","isolamento danificado","cabo deteriorado","danificou","danificaram","dano","avariou"], complementares:[], dica:"Avaliar extensão do dano e necessidade de substituição." },
   { codigo:"A11", desc:"TRINCADO", palavras:["trincado","trincada","trinca","fissura","rachado","rachadura","crack"], complementares:[], dica:"Avaliar extensão da trinca antes de definir reparo ou substituição." },
   { codigo:"A14", desc:"DOBRADO/AFUNDADO", palavras:["dobrado","dobrada","dobrou","amassado","amassada","afundado","deformado","deformada","amolgado"], complementares:[], dica:"Verificar se a deformação compromete o funcionamento do componente." },
-  { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","furo","com furo","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado","cortado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
-  { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
+  { codigo:"A15", desc:"ROMPIDO OU RASGADO", palavras:["rompido","com furo","rompida","rompeu","rasgado","rasgada","rasgou","ruptura","lacerado","furado","perfurado"], complementares:[], dica:"Substituir imediatamente para evitar contaminação ou vazamento." },
+  { codigo:"A21", desc:"ROSCAS ESPANADAS", palavras:["rosca espanada","roscas espanadas","rosca danificada","rosca destruída","rosca ruim","filete danificado","filete espanado","rosca estourada","parafuso estourado","filete estourado","espanou","espanada","estourado","estourada"], complementares:[], dica:"Avaliar uso de helicoil ou substituição do componente." },
   { codigo:"A23", desc:"SEPARADO", palavras:["desprendimento","componente separado","peca separada","desconectado","desconectada","soltou do conjunto","desprendeu","caiu do conjunto","desprendido","separou do conjunto","separou da estrutura","soltou","soltaram","soltando"], complementares:[], dica:"Verificar causa da separacao — fadiga, vibracao ou fixacao inadequada." },
-  { codigo:"A10", desc:"QUEBRADO", palavras:["quebrado","quebrada","quebrados","quebradas","partido","partida","quebrou","estourado","estourada","quebra","quebra total","quebra parcial"], complementares:[], dica:"Verificar causa da quebra antes da substituição do componente." },
+  { codigo:"A10", desc:"QUEBRADO", palavras:["quebrado","quebrada","quebrados","quebradas","partido","quebrou","quebra total","quebra parcial","trincou e quebrou","houve quebra"], complementares:[], dica:"Verificar causa da quebra antes da substituição do componente." },
   { codigo:"A12", desc:"EMPENADO OU TORCIDO", palavras:["empenado","empenada","empenados","empenadas","torcido","torcida","torto","torta","entortado","entortada"], complementares:[], dica:"Verificar se a deformação compromete alinhamento e funcionamento do componente." },
   { codigo:"A27", desc:"TERMINAL DANIFICADO", palavras:["terminal danificado","terminal com dano","conector danificado","conector com dano","pino danificado","pino dobrado"], complementares:[], dica:"Verificar continuidade elétrica após reparo do terminal." },
 
   { codigo:"B13", desc:"DESGASTADO", palavras:["desgastado","desgastada","desgaste","desgastou","desgaste por atrito","ressecado","ressecada","ressecamento","deteriorado","deteriorada","deterioração","envelhecido","envelhecida","gasto","gasta","fim de vida","vida util","fim de vida util","desgaste natural","iso alto","iso elevado","iso acima","iso fora de especificacao","contagem de particulas alta","particulas de desgaste"], complementares:[], dica:"Identificar causa do desgaste para evitar reincidência. ISO alto na analise de oleo (SOS) indica desgaste interno do componente." },
-  { codigo:"B2", desc:"RISCADO/ENTALHADO", palavras:["riscado","riscada","risco","entalhe","entalhado","marcas de atrito","abrasão superficial"], complementares:[], dica:"Verificar se o risco compromete vedação ou estrutura." },
+  { codigo:"B2", desc:"RISCADO/ENTALHADO", palavras:["riscado","riscada","riscou","entalhe","entalhado","marcas de atrito","abrasão superficial","ranhura","arranhao","arranhado","sulco"], complementares:[], dica:"Verificar se o risco compromete vedação ou estrutura." },
   { codigo:"B3", desc:"ENFERRUJADO/CORROÍDO", palavras:["enferrujado","enferrujada","ferrugem","corroído","corroída","corrosão","oxidado","oxidada","oxidação"], complementares:[], dica:"Tratar a corrosão e aplicar proteção para evitar progressão." },
-  { codigo:"B62", desc:"SUJEIRA OU MATERIAL ESTRANHO", palavras:["ferro acima","cobre acima","sodio acima","elementos acima","metais acima","valores acima do especificado","acima do especificado","resultado sos","analise de oleo","sujeira","material estranho","contaminacao","contaminado","acumulo de material","entupido","obstruido","residuo","particula","acumulo de poeira","entrada de poeira","poeira acumulada","contaminado por poeira","limalha","limalhas","limalha ferrosa","limalhas ferrosas","particulas metalicas","particula metalica","metal no oleo","ferro no oleo","particulas de ferro","amostra sos","sos","analise sos","resultado sos","amostra de oleo","analise de oleo","oleo com particulas","particulas no oleo","debris","debris metalico","debris ferroso","contaminacao metalica","material ferroso","fragmento metalico","fragmentos metalicos","cavaco","cavacos","abrasivos no oleo","particulas abrasivas","iso alto","iso elevado","iso acima","iso fora","contagem de particulas alta","contagem iso alta"], complementares:[], dica:"Resultado de SOS com limalhas/ISO alto indica desgaste interno de componente. Identificar origem das particulas e inspecionar componentes do sistema (ex.: comando final, hidraulico)." },
+  { codigo:"B62", desc:"SUJEIRA OU MATERIAL ESTRANHO", palavras:["metal acima","metais acima","ferro acima","cobre acima","sodio acima","elementos acima","elemento acima","sujeira","material estranho","contaminacao","contaminado","acumulo de material","residuo","particula","acumulo de poeira","entrada de poeira","poeira acumulada","contaminado por poeira","limalha","limalhas","limalha ferrosa","limalhas ferrosas","particulas metalicas","particula metalica","metal no oleo","particulas de ferro","oleo com particulas","particulas no oleo","debris","contaminacao metalica","material ferroso","fragmento metalico","fragmentos metalicos","cavaco","cavacos","abrasivos no oleo","particulas abrasivas","iso alto","iso elevado","iso acima","iso fora","contagem de particulas alta","contagem iso alta"], complementares:[], dica:"Resultado de SOS com limalhas/ISO alto indica desgaste interno de componente. Identificar origem das particulas e inspecionar componentes do sistema (ex.: comando final, hidraulico)." },
   { codigo:"B90", desc:"DEFEITO DE FUNDIÇÃO", palavras:["bolha","bolhas","bolha na mangueira","bolha no terminal","bolha proximo","bolha próximo","mangueira com bolha","mangueira estufada","mangueira inchada","porosidade","defeito de fundição","defeito no material","incluso","inclusão","falha interna","defeito interno","falha de material"], complementares:[], dica:"Analisar o componente para confirmar defeito de fabricação antes de acionar garantia." },
-  { codigo:"B51", desc:"AGARRA OU PRENDE", palavras:["agarra","prende","travado","travada","emperrado","emperrada","grippado","gripado","engripado","trava","preso"], complementares:[], dica:"Verificar lubrificação e tolerâncias do componente." },
+  { codigo:"B51", desc:"AGARRA OU PRENDE", palavras:["agarra","agarrando","prendendo","travado","travada","emperrado","emperrada","grippado","gripado","engripado","esta preso"], complementares:[], dica:"Verificar lubrificação e tolerâncias do componente." },
 
-  { codigo:"P22", desc:"FERRAGEM SOLTA OU FALTANTE", palavras:["ausencia","ausencia de","ausencia da","ausencia do","parafuso faltando","parafuso ausente","porca faltando","abracadeira faltando","suporte faltando","fixacao faltante","sem parafuso","sem abracadeira","ferragem faltante","faltando parafuso","falta parafuso","falta abracadeira","ausencia de parafuso","ausencia de abracadeira","sem fixacao","fixacao ausente","ferragem solta","parafuso solto","porca solta","abracadeira solta","suporte ausente","suporte faltante","suporte nao instalado","sem suporte","ausencia de suporte","clipe ausente","clipe faltando","grampo ausente","grampo faltando","suporte da mangueira ausente","suporte ausente da mangueira","falta suporte","sem clipe","sem grampo","fixador ausente","fixador faltando","faltando","ausente","faltante","nao instalado","nao encontrado","nao possui","sem o parafuso","sem a abracadeira","sem o suporte","sem a porca","sem o clipe","parafuso de fixacao faltando","parafuso de fixacao ausente","porca de fixacao faltando","parafuso faltante","taps ausente","taps faltando","taps faltante","ausencia de taps","sem taps","tampa ausente","tampa faltando","tampa faltante","ausencia de tampa","sem tampa","plug ausente","plug faltando","bujao ausente","bujao faltando","tampa de protecao ausente","tampa de protecao faltando","cap ausente","cap faltando","tampa contra poeira faltando","taps contra poeira","ausencia de taps","folgado","folgada","frouxo","frouxa","esta folgado","esta frouxa","com folga","parafuso folgado","abracadeira folgada","porca folgada","parafuso frouxo","torque baixo","sub-torque","nao apertado","mal apertado"], complementares:[], dica:"Verificar torque de aperto apos instalacao conforme especificacao Cat." },
+  { codigo:"P22", desc:"FERRAGEM SOLTA OU FALTANTE", palavras:["ferragem solta","ferragem faltante","parafuso faltando","parafuso ausente","parafuso solto","porca solta","abracadeira solta","abracadeira faltando","suporte faltando","suporte ausente","sem parafuso","sem abracadeira","sem suporte","sem fixacao","fixacao ausente","clipe ausente","grampo ausente","fixador ausente","parafuso folgado","abracadeira folgada","porca folgada","torque baixo","sub-torque","nao apertado","mal apertado"], complementares:[], dica:"Verificar torque de aperto apos instalacao conforme especificacao Cat." },
 
   { codigo:"E52", desc:"RUIDOSO", palavras:["ruído","barulho","barulhento","ruidoso","rangido","chiado","batida","estrondo","som anormal","ruído anormal","barulho anormal","noise"], complementares:[], dica:"Identificar origem e frequência do ruído para diagnóstico preciso." },
   { codigo:"E53", desc:"SUPERAQUECIMENTO", palavras:["temperatura do combustivel","temperatura combustivel","temperatura no rail","temperatura do rail","temp combustivel","temp do combustivel","temperatura acima da media","acima da media","temp acima da media","superaquecimento","superaquecendo","temperatura alta","sobreaquecimento","aquecimento excessivo","overheating","temp alta","high temp","alta temperatura","alta temp","temperatura elevada","temp elevada","temperatura do escape","alta temperatura do escape","escape com temperatura alta","temperatura do motor alta","temperatura do oleo alta","temperatura do arrefecimento alta","temperatura fora do limite","evento de temperatura","eventos de temperatura","evento de alta temperatura","varios eventos de alta temperatura","temperatura acima do limite","overheat","temp acima","temperatura acima","temperatura critica","temp critica"], complementares:[], dica:"Registrar o codigo de evento (ex: 278-2) e verificar sistema de arrefecimento, turbo e sistema de escape." },
-  { codigo:"E70", desc:"DIFÍCIL DE DAR PARTIDA", palavras:["difícil de dar partida","não dá partida","não parte","não liga","falha na partida","problema partida","não consegue dar partida"], complementares:[], dica:"Verificar bateria, motor de partida e sistema elétrico." },
-  { codigo:"E72", desc:"BAIXA POTÊNCIA", palavras:["baixa potência","perda de potência","sem força","fraco","motor fraco","falta potência","potência reduzida"], complementares:[], dica:"Verificar sistema de combustível, turbo e filtros." },
+  { codigo:"E70", desc:"DIFÍCIL DE DAR PARTIDA", palavras:["difícil de dar partida","não dá partida","não parte","não liga","falha na partida","problema partida","não consegue dar partida","partida a frio","dificuldade na partida","dificuldade de partida","partida lenta","partida dificil","custa a pegar","demora para pegar","nao da a partida"], complementares:[], dica:"Verificar bateria, motor de partida e sistema elétrico." },
+  { codigo:"E72", desc:"BAIXA POTÊNCIA", palavras:["baixa potência","baixa potencia","perda de potência","perda de potencia","sem força","sem forca","sem potencia","motor fraco","motor sem forca","falta de potencia","falta de forca","perda de forca","potência reduzida","potencia reduzida"], complementares:[], dica:"Verificar sistema de combustível, turbo e filtros." },
   { codigo:"E42", desc:"MAU FUNCIONAMENTO DO SISTEMA", palavras:["mau funcionamento","funcionamento irregular","nao funciona corretamente","funcionando mal","problema no sistema","falha no sistema","sistema com defeito","fmi","falha de fmi","codigo fmi","fmi ativo","fmi no sensor","fmi no modulo","fmi na valvula","fmi no atuador","falha eletronica","falha eletrica","falha no sensor","sensor com falha","sensor defeituoso","sensor de velocidade","sensor de pressao","sensor de temperatura","sensor de rotacao","sensor nao responde","sinal de sensor","falha de sinal","sinal invalido","sinal ausente","codigo de falha ativo","codigo de falha","diagnostico de falha","fault code","spn","spn fmi","modulo com falha","ecm com falha","parametro fora","valor fora do range","temperatura diminuiu","temperatura do motor diminuiu","temperatura abaixo do normal","temperatura baixa do motor","motor operando frio","temperatura nao sobe","temperatura nao atinge","temperatura abaixo","motor frio","falha na valvula e-stat","valvula e-stat com defeito","e-stat com defeito","valvula termostatica com defeito","valvula termostatica travada","valvula de temperatura","valvula de arrefecimento","sensor de temperatura do motor","sensor de temperatura","sensor de saida","bomba de agua","bomba dagua","mal funcionamento da valvula","possivel mal funcionamento","suspeita de valvula","inspecionar valvula","valvula suspeita","ecm","ecm do motor","alarme no ecm","alarme do ecm","alarme ativo no ecm","alarme eletrico","alarme eletrica","injetor","injetora","unidade injetora","falha na injetora","alarme no injetor","alarme na injetora"], complementares:[], dica:"Registrar o numero do FMI e SPN para facilitar o diagnostico. Verificar historico de falhas no ET (Electronic Technician). Para valvula e-stat: verificar se esta travada aberta ou fechada." },
-  { codigo:"E66", desc:"PRESSAO MUITO BAIXA", palavras:["pressao baixa","baixa pressao","sem pressao suficiente","queda de pressao","pressao insuficiente","pressao abaixo","pressao abaixo do esperado","pressao de oleo baixa","pressao de oleo abaixo","operando com pressao baixa","pressao abaixo do limite","pressao abaixo do normal","pressao fora do esperado","low pressure","baixa pressao de oleo","pressao do oleo baixa","pressao do sistema baixa","pressao hidraulica baixa","perda de pressao","pressao reduzida","pressao menor que o esperado"], complementares:[], dica:"Verificar bomba, filtros e possiveis vazamentos no circuito. Checar nivel de oleo." },
+  { codigo:"E66", desc:"PRESSAO MUITO BAIXA", palavras:["pressao baixa","baixa pressao","sem pressao suficiente","queda de pressao","pressao insuficiente","pressao abaixo","pressao abaixo do esperado","pressao de oleo baixa","pressao de oleo abaixo","operando com pressao baixa","pressao abaixo do limite","pressao abaixo do normal","pressao fora do esperado","low pressure","baixa pressao de oleo","pressao do oleo baixa","pressao do sistema baixa","pressao hidraulica baixa","perda de pressao","pressao reduzida","pressao menor que o esperado","falta de pressao","falta de pressao de oleo","pressao de oleo faltando"], complementares:[], dica:"Verificar bomba, filtros e possiveis vazamentos no circuito. Checar nivel de oleo." },
   { codigo:"E65", desc:"PRESSAO MUITO ALTA", palavras:["pressao alta","alta pressao","pressao excessiva","sobrepressao","pressao acima do limite","pressao acima do normal","pressao acima do esperado","high pressure","pressao do oleo alta","pressao hidraulica alta","pressao elevada"], complementares:[], dica:"Verificar valvula de alivio e regulagem do sistema." },
   { codigo:"E63", desc:"CONSUMO EXCESSIVO DE OLEO", palavras:["consumo excessivo de oleo","consumindo muito oleo","perdendo oleo","oleo sumindo","alto consumo de oleo","consumo alto de oleo","oleo sendo consumido","motor consumindo oleo","consumo elevado de oleo","usa muito oleo","gasta muito oleo"], complementares:[], dica:"Verificar vedacoes internas e sistema de respiro." },
   { codigo:"E55", desc:"FAZ MUITA FUMAÇA", palavras:["fumaça","fumando","emitindo fumaça","fumaça preta","fumaça branca","fumaça azul","muita fumaça"], complementares:[], dica:"Identificar cor da fumaça — indica origem do problema." },
@@ -125,23 +125,32 @@ var regras = [
   { codigo:"E32", desc:"CIRCUITO ABERTO", palavras:["circuito aberto","open circuit","fio partido","cabo partido","fio rompido","interrompido eletricamente"], complementares:[], dica:"Testar continuidade do circuito com multimetro." },
   { codigo:"E77", desc:"EXCESSO DE ROTACAO", palavras:["excesso de rotacao","alta rotacao","rotacao alta","rotacao elevada","rotacao excessiva","over speed","overspeed","rpm alto","rpm elevado","rpm excessivo","alta rpm","rotacao do ventilador","ventilador em alta rotacao","ventilador rotacao alta","eventos de alta rotacao","rotacao acima do limite","rotacao fora do padrao","rotacao do motor alta","rotacao acima","giro excessivo","giro alto","alta rotacao do ventilador"], complementares:[], dica:"Verificar sistema de controle do ventilador, sensor de rotacao e valvula de controle hidraulico do fan drive." },
   { codigo:"E54", desc:"VIBRA/TREME", palavras:["vibra","vibracao","vibrando","treme","tremor","oscilacao","balanco","chacoalha","vibra muito","vibracao excessiva","vibra anormal","vibra forte"], complementares:[], dica:"Identificar componente de origem da vibracao e verificar fixacoes." },
-  { codigo:"E58", desc:"SOLTO OU DESLIZANTE", palavras:["solto","solta","deslizante","folga excessiva","com folga","folga anormal","movimento indevido","movimento excessivo","jogo excessivo","patinamento","patina","patinou","patinagem","tendencia de patinamento","marcha patinando","embreagem patinando","escorregando a marcha"], complementares:[], dica:"Verificar fixacoes e tolerancias do componente. Em patinamento de marcha, inspecionar embreagens/pacote de discos e pressao da transmissao." },
+  { codigo:"E58", desc:"SOLTO OU DESLIZANTE", palavras:["deslizante","patinamento","patina","patinou","patinagem","tendencia de patinamento","marcha patinando","embreagem patinando","escorregando a marcha","desliza","escorregando"], complementares:[], dica:"Verificar fixacoes e tolerancias do componente. Em patinamento de marcha, inspecionar embreagens/pacote de discos e pressao da transmissao." },
   { codigo:"E73", desc:"OPERACAO IRREGULAR", palavras:["operacao irregular","funcionamento irregular","operando de forma irregular","comportamento irregular","operacao anormal","funcionamento anormal","operando anormal","ciclo irregular","operacao fora do padrao"], complementares:[], dica:"Registrar condicoes de operacao no momento da falha para facilitar diagnostico." },
   { codigo:"E57", desc:"TAMPADO/CONFINADO", palavras:["obstrucao","obstrucao do filtro","obstruido","obstruida","filtro obstruido","entupido","entupimento","filtro entupido","restricao","restrito","filtro restrito","filtro saturado","saturado","saturacao","colmatado","colmatacao","tampado","confinado","passagem obstruida","linha obstruida"], complementares:[], dica:"Substituir/limpar o filtro ou desobstruir a passagem. Verificar causa (contaminacao, intervalo de troca) e o diferencial de pressao do filtro." },
   { codigo:"E64", desc:"FLUTUA", palavras:["flutua","flutuando","flutuacao","oscilando","oscilou","lockup oscilando","oscilando com picos","sinal instavel","leitura instavel","instabilidade"], complementares:[], dica:"Verificar estabilidade do sinal/pressao. Para lockup oscilando, checar valvula de controle do conversor, solenoides e pressao do lockup." },
 
-  { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["folgado","folgada","desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
+  { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","com folga","folga anormal","jogo excessivo","mal ajustado","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
 
   { codigo:"D93", desc:"MAL POSICIONADO", palavras:["mal posicionado","mal posicionada","mal posicionados","mal posicionadas","mal instalado","mal instalada","mal instalados","mal instaladas","posição incorreta","posicao incorreta","instalado errado","instalada errada","montado errado","montada errada","montados errados","montadas erradas","montagem errada","instalação incorreta"], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },
   { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
-  { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
+  { codigo:"L29", desc:"NIVEL ERRADO DE FLUIDO", palavras:["nivel baixo","nivel alto","nivel errado","nivel incorreto","falta de fluido","fluido insuficiente","pouco fluido","nivel fora","nivel de combustivel baixo","baixo nivel de combustivel","eventos de baixo nivel","evento de nivel baixo","nivel de oleo baixo","nivel de arrefecimento baixo","nivel de elc baixo","nivel critico","nivel abaixo","nivel acima","nivel fora do padrao","variacao de nivel","nivel oscilando","sensor de nivel","sensor de nivel travado","sensor de nivel com defeito","sensor de nivel falhando","leitura de nivel incorreta","nivel registrado incorreto","falta de oleo","falta de fluido","falta de combustivel","falta de arrefecimento","falta de elc","falta de lubrificante","nivel de oleo","nivel de combustivel","nivel de arrefecimento","nivel de fluido","nivel do tanque"], complementares:[], dica:"Corrigir nivel conforme OMM e verificar causa da variacao. Se sensor de nivel suspeito, inspecionar o componente." },
   { codigo:"M30", desc:"FLUIDO ERRADO", palavras:["fluido errado","oleo errado","fluido incorreto","oleo incorreto","produto errado","lubrificante errado","combustivel errado","agua no combustivel","agua no oleo","contaminacao de combustivel","combustivel contaminado","oleo contaminado","agua no sistema","agua misturada","eventos de agua","agua detectada","presenca de agua","agua no filtro","filtro separador","drenar agua","drenagem de agua","agua no tanque","contaminacao por agua","mistura de agua","glicol baixo","baixo glicol","concentracao de glicol","glicol fora","glicol incorreto","glicol abaixo","concentracao baixa","concentracao incorreta","concentracao fora","fluido fora da especificacao","liquido fora da especificacao","elc fora da especificacao","elc incorreto","elc degradado","qualidade do fluido","fluido degradado","liquido degradado","substituir liquido","substituir fluido","trocar liquido arrefecedor","trocar elc","ph fora","nitrito baixo","nitrito fora","aditivo baixo","aditivo fora"], complementares:[], dica:"Drenar e substituir com fluido correto conforme especificacao Cat. Para agua no combustivel: drenar filtro separador e verificar origem da contaminacao. Para glicol baixo: verificar concentracao correta conforme OMM do 794AC." },
 
   { codigo:"R82", desc:"PEÇA ERRADA OU FALTANTE", palavras:["peça errada","peça faltante","peça incorreta","componente errado","peça não aplicável","número de peça errado"], complementares:[], dica:"Verificar número de peça no Parts Book antes de instalar." },
-  { codigo:"N8", desc:"ACIDENTE OU ABUSO", palavras:["acidente","impacto","colisão","batida","abuso","uso indevido","operação incorreta","negligência"], complementares:[], dica:"Documentar com fotos e registrar ocorrência formal." },
-  { codigo:"Y79", desc:"INTERFERÊNCIA", palavras:["interferência","atrito entre componentes","roçando","roça","contato indevido","tocando em outro componente","encostando","causando atrito","trito entre"], complementares:[], dica:"Verificar fixação e roteamento correto de mangueiras e cabos." },
-  { codigo:"K80", desc:"DIFÍCIL DE ACESSAR", palavras:["difícil acesso","difícil de acessar","acesso difícil","sem acesso","acesso restrito","difícil manutenção"], complementares:[], dica:"Registrar para avaliação de melhoria de serviceabilidade." }
+  { codigo:"N8", desc:"ACIDENTE OU ABUSO", palavras:["acidente","impacto","colisão","abuso","uso indevido","operação incorreta","negligência","sofreu batida","maquina batida","capotou","tombou"], complementares:[], dica:"Documentar com fotos e registrar ocorrência formal." },
+  { codigo:"Y79", desc:"INTERFERÊNCIA", palavras:["interferência","atrito entre","atrito com","atrito na","atritando","roçando","contato indevido","tocando em outro","encostando","causando atrito","roteamento incorreto"], complementares:[], dica:"Verificar fixação e roteamento correto de mangueiras e cabos." },
+  { codigo:"K80", desc:"DIFÍCIL DE ACESSAR", palavras:["difícil acesso","difícil de acessar","acesso difícil","sem acesso","acesso restrito","difícil manutenção"], complementares:[], dica:"Registrar para avaliação de melhoria de serviceabilidade." },
+
+  { codigo:"E69", desc:"SEM PRESSÃO", palavras:["sem pressao","pressao zero","zero de pressao","nao gera pressao","nao tem pressao","sem pressao nenhuma","pressao nula","ausencia de pressao"], complementares:[], dica:"Verificar bomba, valvula de alivio e nivel do fluido; confirmar se e pressao zero real ou falha de leitura." },
+  { codigo:"E44", desc:"TROCA DE MARCHA IRREGULAR", palavras:["troca de marcha irregular","trocas irregulares","troca de marcha brusca","solavanco na troca","tranco na troca","trancos na troca","troca de marcha com tranco","mudanca de marcha irregular","cambio irregular","marcha engatando errado"], complementares:[], dica:"Verificar pressao e solenoides da transmissao e o historico de eventos no ET." },
+  { codigo:"E45", desc:"DIFÍCIL DE ENGATAR", palavras:["dificil de engatar","nao engata","custa a engatar","dificuldade para engatar","nao entra a marcha","marcha nao engata","dificuldade de engate"], complementares:[], dica:"Verificar acionamento, pressao de comando e desgaste do conjunto de engate." },
+  { codigo:"E47", desc:"FREIA COM DIFICULDADE", palavras:["freia com dificuldade","freio fraco","freio nao segura","baixa eficiencia de freio","freio ineficiente","demora para frear","perda de freio","freio falhando","frenagem fraca"], complementares:[], dica:"Verificar sistema de freio, pressao e desgaste de pastilhas/discos." },
+  { codigo:"E48", desc:"DIREÇÃO DIFÍCIL", palavras:["direcao dificil","direcao pesada","direcao dura","direcao muito pesada","direcao muito dura","dificuldade para estercar","direcao travando","esforco na direcao","direcao sem assistencia","pesada ao manobrar","dificil de manobrar","manobra pesada"], complementares:[], dica:"Verificar bomba e pressao da direcao e o nivel de fluido." },
+  { codigo:"E68", desc:"PRESSÃO EXCESSIVA NO CÁRTER", palavras:["pressao no carter","pressao excessiva no carter","blow-by","blowby","respiro do motor","pressao de carter alta","gases no carter"], complementares:[], dica:"Indica blow-by; verificar respiro, aneis e desgaste interno do motor." },
+  { codigo:"D86", desc:"QUEBRADIÇO/MUITO DURO", palavras:["quebradico","quebradica","muito duro","endurecido","material endurecido","ressecado e duro","perdeu elasticidade","cristalizado"], complementares:[], dica:"Material fora de especificacao (quebradico/endurecido); avaliar lote e armazenamento." },
+  { codigo:"A25", desc:"CORTADO", palavras:["cortado","cortada","cortou","seccionado","cabo cortado","secao cortada"], complementares:[], dica:"Avaliar causa do corte (atrito, aresta viva, ferramenta) e substituir." }
 ];
 
 // ===================== REGRAS COMPLEMENTARES ESPECIAIS =====================
@@ -218,17 +227,29 @@ function normalizar(txt) {
     .replace(/[^a-z0-9\s]/g, " ");
 }
 
-// Casa uma palavra-chave no texto normalizado.
-// Para siglas/termos curtos (<=3 chars: sos, fmi, spn, ecm) exige limite de palavra,
-// senao "sos" casaria dentro de "parafuSOS", "casos", "avisos" etc.
+// Casa uma palavra-chave no texto normalizado, sempre no INICIO de uma palavra
+// (permite plural/sufixo: "folgado" casa "folgados"), nunca embutida no meio de
+// outra palavra: assim "sos" NAO casa dentro de "parafuSOS" nem "roca" dentro de "tROCA".
 function casaPalavra(textoNorm, palavra) {
   var p = normalizar(palavra).trim();
   if (!p) return false;
-  if (p.length <= 3) {
-    return new RegExp("(^|[^a-z0-9])" + p + "([^a-z0-9]|$)").test(textoNorm);
-  }
-  return textoNorm.includes(p);
+  return new RegExp("(^|[^a-z0-9])" + p).test(textoNorm);
 }
+
+function getRegra(cod) {
+  for (var i = 0; i < regras.length; i++) if (regras[i].codigo === cod) return regras[i];
+  return null;
+}
+
+// Ordem de preferencia para escolher o PRINCIPAL e ordenar os complementares.
+var prioridade = [
+  "P22","C17","C18","C16","C19","C67",
+  "E31","E32","E57","E42","E69","E66","E68","E65","E70",
+  "E77","E53","E55","E63","E72","E47","E48","E73","H91","D93","E52","E54","E64","E44","E45","E58",
+  "A10","A11","A15","A25","A14","A12","A21","A23","A27","A26",
+  "B62","B13","B51","B90","B2","B3",
+  "D86","D95","L29","M30","R82","Y79","N8","K80"
+];
 
 function identificar() {
   var texto = document.getElementById("ia-input").value.trim();
@@ -237,77 +258,61 @@ function identificar() {
     return;
   }
 
-  var textoNorm = normalizar(texto);
-
-  textoNorm = textoNorm
-    .replace(/\bs\s+o\s+s\b/g, "sos")
-    .replace(/acima do especificado/g, "contaminacao")
-    .replace(/\bferro\b|\bcobre\b/g, "metal")
-    .replace(/analise de oleo|analise sos/g, "sos")
-    .replace(/ausenc\w*/g, "ausente")
-    .replace(/falt\w*/g, "faltante")
-    .replace(/solt(ou|aram|ando)/g, "separado")
-    .replace(/quebr\w*/g, "quebrado")
-    .replace(/rasg\w*/g, "rasgado");
+  var textoNorm = normalizar(texto).replace(/\s+/g, " ");
+  textoNorm = textoNorm.replace(/\bs\s+o\s+s\b/g, "sos");
+  // So converte ferro/cobre->metal e "acima do especificado"->contaminacao em contexto de
+  // oleo/SOS, para nao classificar peca de ferro ou pressao fora de spec como contaminacao.
+  if (/(^|[^a-z])(sos|oleo|amostra|analise|lubrificante|graxa)/.test(textoNorm)) {
+    textoNorm = textoNorm.replace(/\bferro\b|\bcobre\b/g, "metal");
+  }
+  // "acima do especificado" so vira contaminacao quando ha contexto de elemento/metal (analise SOS),
+  // nao em "pressao/temperatura acima do especificado".
+  if (/(^|[^a-z])(sos|amostra|elemento|metal|sodio|silicio|aluminio|cromo|limalha|particula)/.test(textoNorm)) {
+    textoNorm = textoNorm.replace(/acima do especificado/g, "contaminacao");
+  }
 
   var resultEl = document.getElementById("ia-result");
   resultEl.style.display = "block";
 
+  // 1) matches genericos por palavra-chave
   var encontrados = [];
-
   for (var j = 0; j < regras.length; j++) {
-    var r = regras[j];
-    for (var k = 0; k < r.palavras.length; k++) {
-      if (casaPalavra(textoNorm, r.palavras[k])) {
-        encontrados.push(r);
-        break;
-      }
+    for (var k = 0; k < regras[j].palavras.length; k++) {
+      if (casaPalavra(textoNorm, regras[j].palavras[k])) { encontrados.push(regras[j]); break; }
     }
   }
 
-  var temAusencia =
-    textoNorm.includes("ausente") ||
-    textoNorm.includes("faltante") ||
-    textoNorm.includes("sem ");
+  // Sinais para o gate de FERRAGEM solta/faltante (P22): so dispara com substantivo de
+  // ferragem E um sinal de falta/solta. Assim "falta de oleo"/"sem pressao" NAO viram P22.
+  var temFerragem = /(^|[^a-z])(parafuso|porca|abracadeira|suporte|clipe|grampo|fixador|fixac|ferragem|arruela|prisioneiro|bujao|plug|tampa|coxim|presilha|braquete|taps|protetor|protecao|cap |pino|retentor|cupilha|contrapino|trava de|presilha)/.test(textoNorm);
+  var faltaOuSolta = /(^|[^a-z])(faltand|faltante|ausen|sem |nao instalad|nao possui|nao tem |solto|solta|folgad|frouxo|frouxa|mal apertad|nao apertad|torque baixo|sub torque|instalar|aplicar|recolocar|repor )/.test(textoNorm);
 
   var principal = null;
+  var compsCurados = [];
 
-  if (temAusencia) {
-    for (var p0 = 0; p0 < regras.length; p0++) {
-      if (regras[p0].codigo === "P22") {
-        principal = regras[p0];
-        break;
-      }
+  // 2) regras curadas (complementaresEspeciais): 1o gatilho cujos termos TODOS aparecem
+  for (var e = 0; e < complementaresEspeciais.length; e++) {
+    var ce = complementaresEspeciais[e], todos = true;
+    for (var g = 0; g < ce.gatilho.length; g++) {
+      if (!casaPalavra(textoNorm, ce.gatilho[g])) { todos = false; break; }
     }
+    if (todos) { principal = getRegra(ce.principal); compsCurados = ce.complementares || []; break; }
   }
 
+  // 3) ferragem solta/faltante -> P22
+  if (!principal && temFerragem && faltaOuSolta) principal = getRegra("P22");
+
+  // 4) SOS/contaminacao -> B62
   if (!principal && (textoNorm.includes("limalha") || casaPalavra(textoNorm, "sos") || textoNorm.includes("metal")) && (textoNorm.includes("contaminacao") || textoNorm.includes("particula"))) {
-    for (var p1 = 0; p1 < regras.length; p1++) {
-      if (regras[p1].codigo === "B62") {
-        principal = regras[p1];
-        break;
-      }
-    }
+    principal = getRegra("B62");
   }
 
-  if (!principal && encontrados.length > 0) {
-    var prioridade = [
-      "P22","C17","C18","C16","C19","C67",
-      "E31","E32","E57","E42","E66","E65","E70",
-      "E77","E53","E55","E63","E72","E73","E52","E54","E64","E58",
-      "A10","A11","A15","A14","A12","A21","A23","A27","A26",
-      "B62","B13","B51","B90","B2","B3",
-      "H91","D93","D95","L29","M30","R82","Y79","N8","K80"
-    ];
-
-    for (var p = 0; p < prioridade.length; p++) {
+  // 5) cascata por prioridade entre os encontrados
+  if (!principal) {
+    for (var pr = 0; pr < prioridade.length && !principal; pr++) {
       for (var x = 0; x < encontrados.length; x++) {
-        if (encontrados[x].codigo === prioridade[p]) {
-          principal = encontrados[x];
-          break;
-        }
+        if (encontrados[x].codigo === prioridade[pr]) { principal = encontrados[x]; break; }
       }
-      if (principal) break;
     }
   }
 
@@ -316,19 +321,17 @@ function identificar() {
     return;
   }
 
+  // complementares: curados primeiro, depois os encontrados ordenados por prioridade (sem o principal)
   var comps = [];
-  for (var i = 0; i < encontrados.length; i++) {
-    if (encontrados[i].codigo !== principal.codigo) {
-      var existe = false;
-      for (var x = 0; x < comps.length; x++) {
-        if (comps[x].c === encontrados[i].codigo) {
-          existe = true;
-          break;
-        }
-      }
-      if (!existe) {
-        comps.push({ c: encontrados[i].codigo, d: encontrados[i].desc });
-      }
+  function addComp(c, d) {
+    if (c === principal.codigo) return;
+    for (var i = 0; i < comps.length; i++) if (comps[i].c === c) return;
+    comps.push({ c: c, d: d });
+  }
+  for (var cc = 0; cc < compsCurados.length; cc++) addComp(compsCurados[cc].c, compsCurados[cc].d);
+  for (var pp = 0; pp < prioridade.length; pp++) {
+    for (var y = 0; y < encontrados.length; y++) {
+      if (encontrados[y].codigo === prioridade[pp]) addComp(encontrados[y].codigo, encontrados[y].desc);
     }
   }
 
