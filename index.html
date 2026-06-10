@@ -221,6 +221,9 @@ var complementaresEspeciais = [
   { gatilho:["atrito","mangueira"], principal:"A26", complementares:[{c:"B13", d:"Desgaste causado por atrito entre componentes"},{c:"Y79", d:"Interferência entre componentes (roteamento incorreto)"}] },
   { gatilho:["abracadeira","montada"], principal:"D93", complementares:[] },
   { gatilho:["abracadeiras","erradas"], principal:"D93", complementares:[] },
+  { gatilho:["nao","reposicionad"], principal:"D93", complementares:[] },
+  { gatilho:["nao","recolocad"], principal:"D93", complementares:[] },
+  { gatilho:["nao","devido lugar"], principal:"D93", complementares:[] },
   { gatilho:["separado"], principal:"A23", complementares:[{c:"B13", d:"Desgaste por fim de vida útil"}] }
 ];
 
@@ -263,6 +266,9 @@ function identificar() {
 
   var textoNorm = normalizar(texto).replace(/\s+/g, " ");
   textoNorm = textoNorm.replace(/\bs\s+o\s+s\b/g, "sos");
+  // "bracadeira" e "abracadeira" sao a mesma peca (ambas usadas no Brasil); as regras/gates
+  // so conhecem "abracadeira", entao canonizamos no inicio da palavra (idempotente).
+  textoNorm = textoNorm.replace(/\bbracadeira/g, "abracadeira");
   // So converte ferro/cobre->metal e "acima do especificado"->contaminacao em contexto de
   // oleo/SOS, para nao classificar peca de ferro ou pressao fora de spec como contaminacao.
   if (/(^|[^a-z])(sos|oleo|amostra|analise|lubrificante|graxa)/.test(textoNorm)) {
