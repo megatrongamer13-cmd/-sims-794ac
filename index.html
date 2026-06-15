@@ -306,7 +306,7 @@ function identificar() {
 
   // Sinais para o gate de FERRAGEM solta/faltante (P22): so dispara com substantivo de
   // ferragem E um sinal de falta/solta. Assim "falta de oleo"/"sem pressao" NAO viram P22.
-  var temFerragem = /(^|[^a-z])(parafuso|porca|abracadeira|suporte|clipe|grampo|fixador|fixac|ferragem|arruela|prisioneiro|bujao|plug|tampa|coxim|presilha|braquete|taps|protetor|protecao|cap |pino|retentor|cupilha|contrapino|trava de|presilha)/.test(textoNorm);
+  var temFerragem = /(^|[^a-z])(parafuso|porca|abracadeira|suporte|clipe|grampo|fixador|fixac|ferragem|arruela|prisioneiro|bujao|plug|tampa|coxim|presilha|braquete|taps|protetor|protecao|cap |pino|retentor|cupilha|contrapino|trava de|presilha|silencios|ponteir|escapament|exaust)/.test(textoNorm);
   var faltaOuSolta = /(^|[^a-z])(faltand|faltante|ausen|sem |nao instalad|nao possui|nao tem |solto|solta|folgad|frouxo|frouxa|mal apertad|nao apertad|torque baixo|sub torque|instalar|aplicar|recolocar|repor )/.test(textoNorm);
 
   var principal = null;

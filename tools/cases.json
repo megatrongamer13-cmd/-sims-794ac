@@ -8,6 +8,8 @@
   { "esperado": "P22", "descricao": "AUSENCIA DO CONJUNTO DE LAMPADAS DE SINAL NA BASCULA, SOLICITACAO A INSTALACAO DAS LAMPADAS DE SINAL", "nota": "lampada faltante (escolha do usuario)" },
   { "esperado": "P22", "descricao": "TRAVA DO PINO INFERIOR DO CILINDRO DE ELEVACAO L/D SOLDADA. DEVIDO A QUEDA DO PARAFUSO FOI REALIZADO UMA SOLDA NA TRAVA ATE A APLICACAO DO PARAFUSO", "nota": "queda do parafuso (2026-06-15)" },
   { "esperado": "P22", "descricao": "PARAFUSO FALTANTE NA LATARIA DA CABINE", "nota": "parafuso faltante" },
+  { "esperado": "P22", "descricao": "INSP- AUSENCIA DA PONTEIRA DO SILENCIOSO DO TUBO DE EXAUSTAO LADO ESQUERDO.", "nota": "componente de escapamento faltante -> P22 (2026-06-15)" },
+  { "esperado": "P22", "descricao": "SILENCIOSO DO ESCAPAMENTO SOLTO", "nota": "componente de escapamento solto -> P22" },
   { "esperado": "B13", "descricao": "FAROL COM BAIXA LUMINOSIDADE E LENTES OFUSCADAS", "nota": "lente ofuscada -> B13(+E42)" },
   { "esperado": "B13", "descricao": "ATRITO COM ABRACADEIRA DO MANGOTE DE ADMISSAO DANIFICOU A MANGUEIRA", "nota": "atrito+abracadeira+mangote" },
   { "esperado": "D93", "descricao": "PROTECAO ISOLANTE DO TERMINAL FORA DE POSICAO", "nota": "fora de posicao -> D93" },
@@ -35,6 +37,7 @@
   { "esperado": "E42", "descricao": "FAROL NAO ACENDE", "nota": "regressao: -> E42" },
   { "esperado": "E70", "descricao": "MOTOR DE PARTIDA NAO FUNCIONA, DIFICIL DE DAR PARTIDA", "nota": "regressao: 'motor de partida' nao forca P22; partida->E70" },
   { "esperado": "E77", "descricao": "ALTA ROTACAO DO VENTILADOR", "nota": "regressao: rotacao alta -> E77 (curado)" },
+  { "esperado": "E53", "descricao": "ALTA TEMPERATURA DO ESCAPE", "nota": "regressao: temperatura do escape -> E53, nao P22 (gate de exaustao exige falta/solta)" },
   { "esperado": "NENHUM", "descricao": "AS MANGUEIRAS FORAM REPOSICIONADAS CORRETAMENTE", "nota": "regressao: positivo de reposicionamento NAO dispara D93" },
 
   { "esperado": "E66", "descricao": "PRESSAO 16 PSI ABAIXO DO ESPECIFICADO", "xfail": true, "nota": "limite: numero/unidade intercalado quebra a contiguidade da keyword 'pressao abaixo' -> motor devolve NENHUM (deveria E66)" },
