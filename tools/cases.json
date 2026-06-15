@@ -21,6 +21,7 @@
   { "esperado": "E42", "descricao": "CST_TENDENCIA DE BAIXA ROTACAO DO BLOWER", "nota": "baixa rotacao blower -> E42" },
   { "esperado": "E42", "descricao": "CST_TENDENCIA DE QUEDA NA TEMPERATURA DOS ENROLAMENTOS #1 E #2 DO GERADOR", "nota": "queda de temperatura -> E42" },
   { "esperado": "E42", "descricao": "TEMPERATURA DO MOTOR DIMINUIU, POSSIVEL VALVULA E-STAT TRAVADA", "nota": "e-stat -> E42(+E73)" },
+  { "esperado": "E42", "descricao": "CST_TENDENCIA DE ABERTURA DA FCV CRITICA.", "nota": "evento CST_ eletronico da FCV (diagnostico/teste) -> E42 (2026-06-15)" },
   { "esperado": "E57", "descricao": "FILTRO ENTUPIDO E OBSTRUIDO", "nota": "filtro entupido -> E57" },
   { "esperado": "E58", "descricao": "PATINAMENTO DE MARCHA NA TRANSMISSAO", "nota": "patinamento -> E58" },
   { "esperado": "E64", "descricao": "LOCKUP OSCILANDO COM PICOS DE PRESSAO", "nota": "lockup oscilando -> E64" },
@@ -38,6 +39,7 @@
   { "esperado": "E70", "descricao": "MOTOR DE PARTIDA NAO FUNCIONA, DIFICIL DE DAR PARTIDA", "nota": "regressao: 'motor de partida' nao forca P22; partida->E70" },
   { "esperado": "E77", "descricao": "ALTA ROTACAO DO VENTILADOR", "nota": "regressao: rotacao alta -> E77 (curado)" },
   { "esperado": "E53", "descricao": "ALTA TEMPERATURA DO ESCAPE", "nota": "regressao: temperatura do escape -> E53, nao P22 (gate de exaustao exige falta/solta)" },
+  { "esperado": "C17", "descricao": "VAZAMENTO DE OLEO NA FCV", "nota": "regressao: sintoma fisico (vazamento) vence a keyword fcv -> C17, nao E42" },
   { "esperado": "NENHUM", "descricao": "AS MANGUEIRAS FORAM REPOSICIONADAS CORRETAMENTE", "nota": "regressao: positivo de reposicionamento NAO dispara D93" },
 
   { "esperado": "E66", "descricao": "PRESSAO 16 PSI ABAIXO DO ESPECIFICADO", "xfail": true, "nota": "limite: numero/unidade intercalado quebra a contiguidade da keyword 'pressao abaixo' -> motor devolve NENHUM (deveria E66)" },
