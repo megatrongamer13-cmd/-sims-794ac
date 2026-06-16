@@ -57,6 +57,7 @@ Saída no HTML: `🔴 CÓDIGO PRINCIPAL: <cod> — <desc>` + complementares (cur
   **Lockup oscilando** → `E64`. **"fora de posição" / reposicionamento negado** → `D93`.
 - **Parafuso que caiu** (`queda`/`caiu` + ferragem) → `P22`; a solda paliativa é ação corretiva, não gera código.
 - **Componente de escapamento faltante/solto** (silencioso, ponteira, tubo de exaustão/escapamento + falta/solta) → `P22` — esses substantivos vivem no `temFerragem`, junto de `protetor`/`tampa`/`coxim`. Temperatura do escape segue `E53` (sem falta/solta o gate não dispara).
+- **Payload com problema + suspensão batendo** (resolução = calibração conforme manual) → `H91` (AJUSTAGEM INAPROPRIADA): calibração = reajuste. Gatilhos `["payload","suspensao"]` e `["batendo","suspensao"]`. ⚠️ o Identificador só lê o campo **Sintoma**, não a Ação — por isso o gatilho usa o vocabulário do sintoma (payload/suspensão batendo), não a palavra "calibração". Payload sozinho como falha eletrônica (VIMS) seria `E42` — só dispara H91 com o par.
 
 ## COOKBOOK — "descrição X não retorna código" (o passo a passo)
 1. **Reproduzir** (sem reler o index.html): `node tools/harness.js "DESCRIÇÃO AQUI"` → vê o código atual (ou `NENHUM`).

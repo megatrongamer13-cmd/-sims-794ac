@@ -15,6 +15,8 @@
   { "esperado": "D93", "descricao": "PROTECAO ISOLANTE DO TERMINAL FORA DE POSICAO", "nota": "fora de posicao -> D93" },
   { "esperado": "D93", "descricao": "NAO FORAM REPOSICIONADAS AS MANGUEIRAS PARA O DEVIDO LUGAR", "nota": "reposicionamento negado" },
   { "esperado": "D93", "descricao": "ABRACADEIRAS DE FIXACAO DAS MANGUEIRAS DO CILINDRO DE DIRECAO INSTALADAS INCORRETAMENTE", "nota": "instalad+incorret -> D93 (mal instalado, nao falta/solta)" },
+  { "esperado": "H91", "descricao": "OPERACAO RELATOU QUE EXISTE PROBLEMAS COM PAYLOAD E INFORMOU TAMBEM QUE EQUIPAMENTO ESTA BATENDO SUSPENSAO", "nota": "payload+suspensao -> H91 (resolucao=calibracao=reajuste; escolha do usuario 2026-06-16)" },
+  { "esperado": "H91", "descricao": "EQUIPAMENTO ESTA BATENDO SUSPENSAO DIANTEIRA", "nota": "batendo+suspensao -> H91 (suspensao no fim de curso = precisa calibrar)" },
   { "esperado": "A10", "descricao": "SUPORTE QUEBRADO", "nota": "quebrado -> A10" },
   { "esperado": "E42", "descricao": "CST_FALHA ATIVA NO SENSOR DE TENSAO DO BARRAMENTO DC DO MOTOR DE TRACAO #2", "nota": "drive AC -> E42" },
   { "esperado": "E42", "descricao": "CST_EVENTO ATIVO DE CORRENTE ALTA NA FASE C DO MOTOR DE TRACAO LE", "nota": "corrente alta drive -> E42" },
