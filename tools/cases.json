@@ -17,6 +17,8 @@
   { "esperado": "D93", "descricao": "ABRACADEIRAS DE FIXACAO DAS MANGUEIRAS DO CILINDRO DE DIRECAO INSTALADAS INCORRETAMENTE", "nota": "instalad+incorret -> D93 (mal instalado, nao falta/solta)" },
   { "esperado": "H91", "descricao": "OPERACAO RELATOU QUE EXISTE PROBLEMAS COM PAYLOAD E INFORMOU TAMBEM QUE EQUIPAMENTO ESTA BATENDO SUSPENSAO", "nota": "payload+suspensao -> H91 (resolucao=calibracao=reajuste; escolha do usuario 2026-06-16)" },
   { "esperado": "H91", "descricao": "EQUIPAMENTO ESTA BATENDO SUSPENSAO DIANTEIRA", "nota": "batendo+suspensao -> H91 (suspensao no fim de curso = precisa calibrar)" },
+  { "esperado": "G49", "descricao": "AUSENCIA DE LUBRIFICACAO NO PINO DO LINK INFERIOR LADO ESQUERDO PARTE TRASEIRA", "nota": "ausencia de lubrificacao -> G49 (servico, NAO P22; corrige falso-pos pino+ausencia; escolha do usuario 2026-06-16)" },
+  { "esperado": "L29", "descricao": "FALTA DE LUBRIFICANTE NO COMANDO FINAL", "nota": "lubrificante (substancia/nivel) segue L29; distinto de 'lubrificacao' (ato ausente) -> G49" },
   { "esperado": "A10", "descricao": "SUPORTE QUEBRADO", "nota": "quebrado -> A10" },
   { "esperado": "E42", "descricao": "CST_FALHA ATIVA NO SENSOR DE TENSAO DO BARRAMENTO DC DO MOTOR DE TRACAO #2", "nota": "drive AC -> E42" },
   { "esperado": "E42", "descricao": "CST_EVENTO ATIVO DE CORRENTE ALTA NA FASE C DO MOTOR DE TRACAO LE", "nota": "corrente alta drive -> E42" },

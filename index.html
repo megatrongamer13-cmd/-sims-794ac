@@ -132,6 +132,8 @@ var regras = [
 
   { codigo:"H91", desc:"AJUSTAGEM INAPROPRIADA", palavras:["desalinhado","desalinhada","desalinhamento","fora de alinhamento","mal alinhado","mal regulado","regulagem errada","ajuste incorreto","fora do padrão","folga incorreta","folga excessiva","com folga","folga anormal","jogo excessivo","mal ajustado","sem regulagem"], complementares:[], dica:"Consultar especificação técnica Cat para ajuste correto." },
 
+  { codigo:"G49", desc:"REPARO GERAL", palavras:[], complementares:[], dica:"Serviço de manutenção/reparo geral, sem modo de falha de componente (ex.: relubrificação pontual de pino/articulação). Registrar o serviço executado e verificar o sistema de lubrificação (injetor/linha)." },
+
   { codigo:"D93", desc:"MAL POSICIONADO", palavras:["mal posicionado","mal posicionada","mal posicionados","mal posicionadas","mal instalado","mal instalada","mal instalados","mal instaladas","posição incorreta","posicao incorreta","instalado errado","instalada errada","montado errado","montada errada","montados errados","montadas erradas","montagem errada","instalação incorreta","fora de posicao","fora da posicao","fora de posicoes","fora do lugar","saiu da posicao","saiu do lugar","deslocado","deslocada","deslocou"], complementares:[], dica:"Verificar manual de serviço para posicionamento correto." },
   { codigo:"D95", desc:"DANO DE MONTAGEM", palavras:["dano de montagem","dano na montagem","danificado na montagem","avaria de montagem","erro de montagem"], complementares:[], dica:"Registrar e reportar ao supervisor para análise de causa." },
 
@@ -198,6 +200,9 @@ var complementaresEspeciais = [
   { gatilho:["jogo","excessivo"], principal:"H91", complementares:[] },
   { gatilho:["payload","suspensao"], principal:"H91", complementares:[] },
   { gatilho:["batendo","suspensao"], principal:"H91", complementares:[] },
+  { gatilho:["ausencia","lubrificacao"], principal:"G49", complementares:[] },
+  { gatilho:["falta","lubrificacao"], principal:"G49", complementares:[] },
+  { gatilho:["sem","lubrificacao"], principal:"G49", complementares:[] },
   { gatilho:["parafuso","frouxo"], principal:"P22", complementares:[] },
   { gatilho:["abracadeira","folgada"], principal:"P22", complementares:[] },
   { gatilho:["abracadeira","frouxa"], principal:"P22", complementares:[] },
