@@ -22,7 +22,11 @@ body { font-family: Arial, sans-serif; background: #f4f5f7; color: #1a1a1a; }
 .btn-ia { padding: 0 20px; font-size: 13px; font-weight: 700; background: #1d4ed8; color: #fff; border: none; border-radius: 8px; cursor: pointer; min-width: 130px; }
 .btn-ia:hover { background: #1e40af; }
 .ia-result { margin-top: 1rem; display: none; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1rem; font-size: 13px; line-height: 1.9; }
-.ia-result .codigo-principal { background: #fee2e2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; font-weight: 700; font-size: 14px; }
+.ia-result .codigo-principal { background: #fee2e2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 0.75rem; }
+.ia-result .codigo-principal > span { flex: 1; }
+.btn-copiar { flex-shrink: 0; padding: 6px 14px; font-size: 12px; font-weight: 700; background: #ef4444; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-family: Arial, sans-serif; white-space: nowrap; }
+.btn-copiar:hover { background: #dc2626; }
+.btn-copiar.copiado { background: #16a34a; }
 .ia-result .codigo-complementar { background: #fef9c3; border-left: 4px solid #eab308; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
 .ia-result .dica { background: #dcfce7; border-left: 4px solid #22c55e; border-radius: 6px; padding: 0.75rem 1rem; font-size: 12px; color: #166534; }
 .ia-result .nenhum { background: #f1f5f9; border-radius: 6px; padding: 0.75rem 1rem; color: #64748b; font-size: 13px; }
@@ -61,7 +65,7 @@ tr:hover td { background: #f0f9ff; }
   <div class="ia-box">
     <div class="ia-title">Identificador Automático de Código</div>
     <div class="ia-row">
-      <textarea id="ia-input" placeholder="Cole aqui a descrição da falha... Ex: ATRITO COM ABRAÇADEIRA DO MANGOTE DE ADMISSÃO, DANIFICOU MANGUEIRA ANTI CAVITAÇÃO DA LINHA DA BOMBA D'ÁGUA AUXILIAR PARA O RADIADOR"></textarea>
+      <textarea id="ia-input" onkeydown="if((event.key==='Enter'||event.keyCode===13)&&!event.shiftKey){event.preventDefault();identificar();}" placeholder="Cole aqui a descrição da falha e tecle Enter (Shift+Enter quebra linha)... Ex: ATRITO COM ABRAÇADEIRA DO MANGOTE DE ADMISSÃO, DANIFICOU MANGUEIRA ANTI CAVITAÇÃO DA LINHA DA BOMBA D'ÁGUA AUXILIAR PARA O RADIADOR"></textarea>
       <button class="btn-ia" onclick="identificar()">Identificar<br>Código</button>
     </div>
     <div class="ia-result" id="ia-result"></div>
@@ -366,7 +370,8 @@ function identificar() {
   }
 
   var html = "";
-  html += "<div class='codigo-principal'>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</div>";
+  html += "<div class='codigo-principal'><span>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</span>" +
+    "<button type='button' class='btn-copiar' onclick=\"copiarCodigo('" + principal.codigo + "', this)\">Copiar</button></div>";
 
   if (comps.length > 0) {
     html += "<div class='codigo-complementar'><strong>🟡 COMPLEMENTAR(ES):</strong><br>";
@@ -378,6 +383,34 @@ function identificar() {
 
   html += "<div class='dica'>💡 <strong>Dica:</strong> " + principal.dica + "</div>";
   resultEl.innerHTML = html;
+}
+
+// Copia SO o codigo (ex.: "G49") para a area de transferencia — sem emoji nem descricao.
+function copiarCodigo(codigo, btn) {
+  function feedback() {
+    var orig = btn.getAttribute("data-orig") || btn.textContent;
+    btn.setAttribute("data-orig", orig);
+    btn.textContent = "Copiado!";
+    btn.className = "btn-copiar copiado";
+    setTimeout(function () { btn.textContent = orig; btn.className = "btn-copiar"; }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(codigo).then(feedback, function () { copiarFallback(codigo, feedback); });
+  } else {
+    copiarFallback(codigo, feedback);
+  }
+}
+// Fallback p/ navegador corporativo antigo ou contexto sem clipboard API.
+function copiarFallback(texto, onOk) {
+  var ta = document.createElement("textarea");
+  ta.value = texto;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand("copy"); onOk(); } catch (e) {}
+  document.body.removeChild(ta);
 }
 
 // ===================== TABELA =====================
