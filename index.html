@@ -248,6 +248,11 @@ var complementaresEspeciais = [
   { gatilho:["nao","reposicionad"], principal:"D93", complementares:[] },
   { gatilho:["nao","recolocad"], principal:"D93", complementares:[] },
   { gatilho:["nao","devido lugar"], principal:"D93", complementares:[] },
+  // Cabo eletrico solto -> E58 (SOLTO OU DESLIZANTE), decisao do usuario: o modo dominante e o
+  // "solto" (o "sem isolacao" so descreve o estado). Roda antes do gate P22 porque "cabo" nao e
+  // ferragem (o gate nem dispara). "solto" (masc.) de proposito: nao rouba "abracadeira/porca
+  // solta" (feminino), que seguem P22.
+  { gatilho:["cabo","solto"], principal:"E58", complementares:[] },
   { gatilho:["separado"], principal:"A23", complementares:[{c:"B13", d:"Desgaste por fim de vida útil"}] }
 ];
 

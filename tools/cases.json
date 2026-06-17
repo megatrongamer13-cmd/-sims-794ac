@@ -29,6 +29,7 @@
   { "esperado": "E42", "descricao": "CST_TENDENCIA DE ABERTURA DA FCV CRITICA.", "nota": "evento CST_ eletronico da FCV (diagnostico/teste) -> E42 (2026-06-15)" },
   { "esperado": "E57", "descricao": "FILTRO ENTUPIDO E OBSTRUIDO", "nota": "filtro entupido -> E57" },
   { "esperado": "E58", "descricao": "PATINAMENTO DE MARCHA NA TRANSMISSAO", "nota": "patinamento -> E58" },
+  { "esperado": "E58", "descricao": "CABOS ELETRICOS DE ALIMENTACAO DO SISTEMA DA ESCADA RETRATIL SOLTOS E SEM ISOLACAO", "nota": "cabo+solto -> E58 (modo dominante = solto; escolha do usuario 2026-06-17)" },
   { "esperado": "E64", "descricao": "LOCKUP OSCILANDO COM PICOS DE PRESSAO", "nota": "lockup oscilando -> E64" },
   { "esperado": "E53", "descricao": "SUPERAQUECIMENTO, VARIOS EVENTOS DE ALTA TEMPERATURA", "nota": "superaquecimento" },
   { "esperado": "M30", "descricao": "AGUA NO COMBUSTIVEL, DRENAR FILTRO SEPARADOR", "nota": "agua no combustivel -> M30(+C18)" },
@@ -46,6 +47,7 @@
   { "esperado": "E53", "descricao": "ALTA TEMPERATURA DO ESCAPE", "nota": "regressao: temperatura do escape -> E53, nao P22 (gate de exaustao exige falta/solta)" },
   { "esperado": "C17", "descricao": "VAZAMENTO DE OLEO NA FCV", "nota": "regressao: sintoma fisico (vazamento) vence a keyword fcv -> C17, nao E42" },
   { "esperado": "NENHUM", "descricao": "AS MANGUEIRAS FORAM REPOSICIONADAS CORRETAMENTE", "nota": "regressao: positivo de reposicionamento NAO dispara D93" },
+  { "esperado": "P22", "descricao": "ABRACADEIRA DO CABO SOLTA", "nota": "regressao: 'solta' (fem.) com ferragem segue P22; o gatilho cabo+'solto' (masc.) NAO rouba" },
 
   { "esperado": "E66", "descricao": "PRESSAO 16 PSI ABAIXO DO ESPECIFICADO", "xfail": true, "nota": "limite: numero/unidade intercalado quebra a contiguidade da keyword 'pressao abaixo' -> motor devolve NENHUM (deveria E66)" },
   { "esperado": "A10", "descricao": "LAMPADA QUEBRADA E COMPONENTE DO LADO DIREITO MAL POSICIONADO", "xfail": true, "nota": "bug latente: gatilho curado exige 'quebrado' (masc.); 'quebrada' (fem.) escapa e cai em D93 — mesma classe de aplicar/aplicacao. Corrigir quando o usuario trouxer." }
