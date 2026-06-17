@@ -371,7 +371,7 @@ function identificar() {
 
   var html = "";
   html += "<div class='codigo-principal'><span>🔴 CÓDIGO PRINCIPAL: " + principal.codigo + " — " + principal.desc + "</span>" +
-    "<button type='button' class='btn-copiar' onclick=\"copiarCodigo('" + principal.codigo + "', this)\">Copiar</button></div>";
+    "<button type='button' class='btn-copiar' onclick=\"copiarCodigo(this)\">Copiar</button></div>";
 
   if (comps.length > 0) {
     html += "<div class='codigo-complementar'><strong>🟡 COMPLEMENTAR(ES):</strong><br>";
@@ -385,8 +385,11 @@ function identificar() {
   resultEl.innerHTML = html;
 }
 
-// Copia SO o codigo (ex.: "G49") para a area de transferencia — sem emoji nem descricao.
-function copiarCodigo(codigo, btn) {
+// Copia a linha do codigo principal (ex.: "CODIGO PRINCIPAL: G49 — REPARO GERAL"),
+// sem o emoji 🔴. Le o texto exibido no proprio card (evita escapar aspas/acentos no onclick).
+function copiarCodigo(btn) {
+  var span = btn.parentNode.querySelector("span");
+  var codigo = (span ? span.textContent : "").replace(/🔴/g, "").trim();
   function feedback() {
     var orig = btn.getAttribute("data-orig") || btn.textContent;
     btn.setAttribute("data-orig", orig);
