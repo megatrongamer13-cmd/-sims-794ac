@@ -42,6 +42,8 @@
   { "esperado": "E69", "descricao": "SEM PRESSAO NO SISTEMA HIDRAULICO", "nota": "regressao: sem pressao NAO vira P22" },
   { "esperado": "E42", "descricao": "FAROL FRACO, BAIXA LUMINOSIDADE", "nota": "regressao: dim sem lente -> E42, nao B13/P22" },
   { "esperado": "E42", "descricao": "FAROL NAO ACENDE", "nota": "regressao: -> E42" },
+  { "esperado": "E42", "descricao": "FAROIS ALTOS E BAIXOS COM BAIXA LUMINOZIDADE", "nota": "variante de grafia 'luminozidade' (com z) sem lente -> E42 (2026-06-18)" },
+  { "esperado": "B13", "descricao": "FAROL COM BAIXA LUMINOZIDADE E LENTES OFUSCADAS", "nota": "regressao: lente ofuscada vence mesmo com 'luminozidade' (z) -> B13(+E42)" },
   { "esperado": "E70", "descricao": "MOTOR DE PARTIDA NAO FUNCIONA, DIFICIL DE DAR PARTIDA", "nota": "regressao: 'motor de partida' nao forca P22; partida->E70" },
   { "esperado": "E77", "descricao": "ALTA ROTACAO DO VENTILADOR", "nota": "regressao: rotacao alta -> E77 (curado)" },
   { "esperado": "E53", "descricao": "ALTA TEMPERATURA DO ESCAPE", "nota": "regressao: temperatura do escape -> E53, nao P22 (gate de exaustao exige falta/solta)" },
