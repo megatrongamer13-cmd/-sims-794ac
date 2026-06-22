@@ -237,6 +237,17 @@ var complementaresEspeciais = [
   { gatilho:["sem","lampada"], principal:"P22", complementares:[] },
   { gatilho:["instalacao","lampada"], principal:"P22", complementares:[] },
   { gatilho:["instalar","lampada"], principal:"P22", complementares:[] },
+  // Botao/botoes faltante no painel (ex.: "painel ... falta botoes de acionamento do AC") -> P22,
+  // mesma convencao da lampada faltante. "falta" puro nao esta em faltaOuSolta, por isso gatilho curado.
+  // botao (sing.) e botoes (plural irregular) precisam ser listados: o matcher e prefixo, nao casa um no outro.
+  { gatilho:["ausencia","botao"], principal:"P22", complementares:[] },
+  { gatilho:["ausencia","botoes"], principal:"P22", complementares:[] },
+  { gatilho:["falta","botao"], principal:"P22", complementares:[] },
+  { gatilho:["falta","botoes"], principal:"P22", complementares:[] },
+  { gatilho:["faltante","botao"], principal:"P22", complementares:[] },
+  { gatilho:["faltante","botoes"], principal:"P22", complementares:[] },
+  { gatilho:["sem","botao"], principal:"P22", complementares:[] },
+  { gatilho:["sem","botoes"], principal:"P22", complementares:[] },
   { gatilho:["ofuscad"], principal:"B13", complementares:[{c:"E42", d:"Baixa luminosidade do farol causada pela lente ofuscada/deteriorada"}] },
   { gatilho:["lente","embacad"], principal:"B13", complementares:[{c:"E42", d:"Baixa luminosidade do farol pela lente embaçada"}] },
   { gatilho:["lente","amarelad"], principal:"B13", complementares:[{c:"E42", d:"Lente amarelada/deteriorada reduzindo a luminosidade"}] },
