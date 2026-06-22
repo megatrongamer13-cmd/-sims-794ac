@@ -51,7 +51,7 @@ Saída no HTML: `🔴 CÓDIGO PRINCIPAL: <cod> — <desc>` + complementares (cur
   estator, fase, blower, enrolamento) → **default `E42`**. Inclui evento `CST_` de **FCV** (tendência de
   abertura / diagnóstico-teste): `fcv` é keyword do `E42`. Só perguntar se houver sintoma físico claro de
   outra categoria (vazamento/quebra/trinca) — ex.: "vazamento na FCV" vence e vira `C17` pela prioridade.
-- **Lâmpada faltante/ausente/instalar** → `P22` (escolha do usuário; `R82` seria o mais literal).
+- **Lâmpada / botão faltante** (ausente/sem/instalar no painel) → `P22` (escolha do usuário; `R82` seria o mais literal). Gatilhos curados `["falta"/"faltante"/"ausencia"/"sem","botao"|"botoes"]` — `botao` e `botoes` (plural irregular) listados separados pois o matcher é prefixo; `falta` puro não está em `faltaOuSolta`, por isso gatilho curado em vez do gate.
 - **Farol/lente ofuscada/embaçada/amarelada** → `B13` + `E42`. Farol só "fraco/não acende" (sem lente) → `E42`.
 - **SOS com ISO alto / limalha** → `B62` + `B13`. **Patinamento de marcha** → `E58`. **Filtro entupido** → `E57`.
   **Lockup oscilando** → `E64`. **"fora de posição" / reposicionamento negado** → `D93`.
